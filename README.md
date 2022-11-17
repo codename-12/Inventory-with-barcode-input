@@ -1,0 +1,2 @@
+# Tridayamas
+app for inventory 
