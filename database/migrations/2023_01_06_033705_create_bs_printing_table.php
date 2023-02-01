@@ -12,7 +12,85 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
+    { Schema::create('stock_polos', function (Blueprint $table) {
+            $table->id();
+            $table->string('kode_barang');
+            $table->foreignId('id_customer')
+            ->constrained('customer')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('jenis_kain');
+            $table->string('warna');
+            $table->foreignId('kop')
+            ->constrained('kartu_order_proses')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('LOT');
+            $table->string('ROL');
+            $table->foreignId('id_penerimaan')
+            ->constrained('penerimaan_kain')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('id_pengiriman')->nullable()
+            ->constrained('pengiriman_kain')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('keterangan')->nullable();
+            $table->timestamps();
+        });
+        Schema::create('bs_polos', function (Blueprint $table) {
+            $table->id();
+            $table->string('kode_barang');
+            $table->foreignId('id_customer')
+            ->constrained('customer')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('jenis_kain');
+            $table->string('warna');
+            $table->foreignId('kop')
+            ->constrained('kartu_order_proses')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('LOT');
+            $table->string('ROL');
+            $table->foreignId('id_penerimaan')
+            ->constrained('penerimaan_kain')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('id_pengiriman')->nullable()
+            ->constrained('pengiriman_kain')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('keterangan')->nullable();
+            $table->timestamps();
+        });
+        
+        Schema::create('stock_printing', function (Blueprint $table) {
+            $table->id();
+            $table->string('kode_barang');
+            $table->foreignId('id_customer')
+            ->constrained('customer')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('jenis_kain');
+            $table->string('warna');
+            $table->foreignId('kop')
+            ->constrained('kartu_order_proses')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('LOT');
+            $table->string('ROL');
+            $table->foreignId('id_penerimaan')
+            ->constrained('penerimaan_kain')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->foreignId('id_pengiriman')->nullable()
+            ->constrained('pengiriman_kain')
+            ->onUpdate('cascade')
+            ->onDelete('cascade');
+            $table->string('keterangan')->nullable();
+            $table->timestamps();
+        });
         Schema::create('bs_printing', function (Blueprint $table) {
             $table->id();
             $table->string('kode_barang');
@@ -48,6 +126,9 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('stock_polos');
+        Schema::dropIfExists('bs_polos');
+        Schema::dropIfExists('stock_printing');
         Schema::dropIfExists('bs_printing');
     }
 };

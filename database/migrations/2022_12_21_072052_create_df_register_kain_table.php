@@ -22,7 +22,6 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('jenis_kain');
-            $table->string('warna');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')
             ->onUpdate('cascade')
@@ -41,8 +40,8 @@ return new class extends Migration
             ->constrained('customer')
             ->onUpdate('cascade')
             ->onDelete('cascade');
-            $table->string('jenis_kain');
-            $table->string('warna');
+            $table->string('jenis_kain');   
+            $table->string('kode_desain');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')
             ->onUpdate('cascade')

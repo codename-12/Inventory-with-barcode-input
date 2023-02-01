@@ -1,32 +1,32 @@
 <div
-   class="modal fade text-left"
-      id="input"
-      data-bs-backdrop="static"
-      data-bs-keyboard="false"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="myModalLabel33"
-      aria-hidden="true">
+   class            = "modal fade text-left"
+   id               = "input"
+   data-bs-backdrop = "static"
+   data-bs-keyboard = "false"
+   tabindex         = "-1"
+   role             = "dialog"
+   aria-labelledby  = "myModalLabel33"
+   aria-hidden      = "true">
 
       <div
-        class="modal-dialog modal-dialog-centered"
-        role="document">
+        class = "modal-dialog modal-dialog-centered"
+        role  = "document">
 
-        <div class="modal-content">
-          <div class="modal-header bg-primary">
-            <h4 class="modal-title" id="myModalLabel33">
+        <div class = "modal-content">
+        <div class = "modal-header bg-primary">
+        <h4  class = "modal-title" id = "myModalLabel33">
               INPUT PENERIMAAN BENANG
             </h4>
             <button
-              type="button"
-              class="close"
-              data-bs-dismiss="modal"
-              aria-label="Close">
+              type            = "button"
+              class           = "close"
+              data-bs-dismiss = "modal"
+              aria-label      = "Close">
 
-          <i data-feather="x"></i>
+          <i data-feather = "x"></i>
           </button>
         </div>
-        <form action="{{ route('benang.store') }}" method="POST" class="form-horizontal" data-parsley-validate>
+        <form action = "{{ route('benang.store') }}" method = "POST" class = "form-horizontal" data-parsley-validate>
           @csrf
         <div class="modal-body"  >
           <div class="form-group row">
