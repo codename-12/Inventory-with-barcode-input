@@ -31,7 +31,7 @@ class BenangController extends Controller
     public function index(Request $request)
         {
             if ($request->ajax()) {
-                $data = PenerimaanBenang::select('*')->with(['bsuppliers','bpb']);
+                $data = PenerimaanBenang::select('*')->with(['bsuppliers','bpbs']);
                 return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('action', 'benang.actions')
@@ -41,7 +41,7 @@ class BenangController extends Controller
             $suppliers = BenangSuppliers::all();
             $masterbenangs = Master_benang::all();
             $bpbs = BPB_benang::all(); 
-            return view('benang.index', compact('suppliers','bpbs','masterbenangs'));
+            return view('gudang_benang.benang.index', compact('suppliers','bpbs','masterbenangs'));
         }   
 
     
@@ -55,7 +55,7 @@ class BenangController extends Controller
         $suppliers = BenangSuppliers::all();
         $masterbenangs = Master_benang::all();
         $bpbs = BPB_benang::all(); 
-        return view('benang.create', compact('suppliers','bpbs','masterbenangs'));
+        return view('gudang_benang.benang.index', compact('suppliers','bpbs','masterbenangs'));
     }
     
     /**

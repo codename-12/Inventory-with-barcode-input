@@ -19,11 +19,7 @@ class KOP extends Model
       'KG',
       'LOT',
     ];
-    /**
-     * Get the customer that owns the penerimaan_kain_polos
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
+
     /**
      * Get all of the penerimaans for the KOP
      *

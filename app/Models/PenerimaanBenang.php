@@ -38,7 +38,7 @@ class PenerimaanBenang extends Model
     {
         return $this->belongsTo(BenangSuppliers::class, 'id_supplier', 'id');
     }
-    public function bpb()
+    public function bpbs()
     {
         return $this->belongsTo(BPB_benang::class, 'BPB', 'id');
     }

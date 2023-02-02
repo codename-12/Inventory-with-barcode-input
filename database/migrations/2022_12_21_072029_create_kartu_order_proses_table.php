@@ -22,7 +22,7 @@ return new class extends Migration
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->date('tanggal');
-            $table->string('')->nullable()->default('text');
+            $table->string('jenis_kain');
             $table->string('lebar');
             $table->string('ROL');
             $table->string('KG');
@@ -55,7 +55,7 @@ return new class extends Migration
     public function down()
     {
         Schema::dropIfExists('kartu_order_proses');
-        Schema::dropIfExists('kartu_order_proses');
+        Schema::dropIfExists('kartu_order_proses_printing');
     }
 
 };
