@@ -16,11 +16,6 @@ return new class extends Migration
         Schema::create('df_regkain_polos', function (Blueprint $table) {
             $table->uuid('kode_kain')->unique();
             $table->date('tanggal');
-            $table->foreignId('id_customer')
-            ->constrained('customer')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');  
-            $table->string('jenis_kain');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')
             ->onUpdate('cascade')
@@ -33,12 +28,7 @@ return new class extends Migration
         });
         Schema::create('df_regkain_printing', function (Blueprint $table) {
             $table->uuid('kode_kain')->unique();
-            $table->date('tanggal');
-            $table->foreignId('id_customer')
-            ->constrained('customer')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-            $table->string('jenis_kain');   
+            $table->date('tanggal'); 
             $table->string('kode_desain');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')

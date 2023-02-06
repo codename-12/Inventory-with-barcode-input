@@ -9,9 +9,9 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $penerimaanPerBulan = penerimaan_kain::selectRaw('MONTH(tanggal) as bulan, SUM(KG) as total_kg')
-            ->groupBy('bulan')
-            ->get();
+        // $penerimaanPerBulan = GJpenerimaan_kain::selectRaw('MONTH(tanggal) as bulan, SUM(KG) as total_kg')
+        //     ->groupBy('bulan')
+        //     ->get();
 
         return view('home');
     }

@@ -34,17 +34,17 @@ class KOPController extends Controller
                 $data = KOP::select('*')->with(['customer']);
                 return Datatables::of($data)
                         ->addIndexColumn()
-                        ->addColumn('action', 'KOP.actions')
+                        ->addColumn('action', 'DF.KOP.actions')
                         ->rawColumns(['action'])
                         ->make(true);
             }
             $customers= Customer_kain::all();
-            return view('KOP.index', compact('customers'));
+            return view('DF.KOP.index', compact('customers'));
     }
     public function create()
     {
         $customers= Customer_kain::all();
-        return view('KOP.index', compact('customers'));
+        return view('DF.KOP.index', compact('customers'));
     }
     /**
      * Store a newly created resource in storage.
@@ -81,7 +81,7 @@ class KOPController extends Controller
     public function show(KOP $kop)
     {
         
-        return view('KOP.show');
+        return view('DF.KOP.show');
         
     }
 
@@ -94,7 +94,7 @@ class KOPController extends Controller
     public function edit(KOP $kop)
     {
 
-        return view('KOP.edit').compact('kop');
+        return view('DF.KOP.edit').compact('kop');
     }
 
     /**

@@ -12,8 +12,6 @@ class DFregkain_polos extends Model
     protected $fillable = [
         'kode_kain',
         'tanggal',
-        'id_customer',
-        'jenis_kain',
         'kop',
         'LOT',
         'ROL',

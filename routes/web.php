@@ -1,22 +1,21 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//app 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-
+//divisi benang
 use App\Http\Controllers\BenangController;
 use App\Http\Controllers\PengirimanBenangController;
 use App\Http\Controllers\MasterBenangController;
 use App\Http\Controllers\BPBBenangController;
 use App\Http\Controllers\SupplierBenangController;
 use App\Http\Controllers\InvoiceBenangController;
-
+//divisi rajut
 use App\Http\Controllers\RajutController;
 
-use App\Http\Controllers\CustomerController;
-use App\Http\Controllers\KOPController;
+//divisi gudang jadi
 use App\Http\Controllers\GJPenerimaankainController;
 use App\Http\Controllers\GJstockprintingController;
 use App\Http\Controllers\GJbsprintingController;
@@ -25,7 +24,12 @@ use App\Http\Controllers\GJbspolosController;
 use App\Http\Controllers\GJSTOCKController;
 use App\Http\Controllers\PengirimanKainController;
 
-
+//divisi DF
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\KOPController;
+use App\Http\Controllers\DFProgresskainController;
+use App\Http\Controllers\DFregkain_polosController;
+use App\Http\Controllers\DFregkain_printingController;
 
 
 

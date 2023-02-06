@@ -43,20 +43,6 @@ role="document"
       data-parsley-error-message="Tanggal Harus diisi."
     />
   </div>
-  <label>Customer / langganan: </label>
-  <div class="form-group">
-    <select
-        class="choices form-select shadow-none"
-        style="width: 100%; height: 36px"
-        id="id_customer" name="id_customer"
-        data-parsley-required="true"
-       data-parsley-error-message="Pilih BPB Terbaru">
-       @foreach ($customers as $customer)
-          <option value="{{ $customer->id}}">{{ $customer->nama_customer }}</option>
-       @endforeach
-   </select>
-  </div>
-
    <label>Warna: </label>
    <div class="form-group">
      <input
@@ -113,6 +99,59 @@ role="document"
       data-parsley-required="true"
       data-parsley-error-message="NOMOR KOP Harus diisi."
     />
+  </div>
+  <label>Jenis Stock: </label>
+  <div class="form-check form-check-success">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="jenis_stock"
+      id="Success"
+      value="stock_polos"
+      checked
+    />
+    <label class="form-check-label" for="Success">
+      Stock Polos
+    </label>
+  </div>
+  <div class="form-check form-check-danger">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="jenis_stock"
+      id="Danger"
+      value="bs_polos"
+      checked
+    />
+    <label class="form-check-label" for="Danger">
+      BS POLOS
+    </label>
+  </div>
+  <div class="form-check form-check-success">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="jenis_stock"
+      id="Success"
+      value="stock_polos"
+      checked
+    />
+    <label class="form-check-label" for="Success">
+      Stock PRINTING
+    </label>
+  </div>
+  <div class="form-check form-check-danger">
+    <input
+      class="form-check-input"
+      type="radio"
+      name="jenis_stock"
+      id="Danger"
+      value="bs_polos"
+      checked
+    />
+    <label class="form-check-label" for="Danger">
+      BS PRINTING
+    </label>
   </div>
   <label>Keterangan: </label>
    <div class="form-group">

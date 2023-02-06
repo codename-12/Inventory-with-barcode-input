@@ -31,11 +31,11 @@ class CustomerController extends Controller
             $data = Customer_kain::select('*');
             return Datatables::of($data)
                     ->addIndexColumn()
-                    ->addColumn('action', 'customerkain.actions')
+                    ->addColumn('action', 'DF.customerkain.actions')
                     ->rawColumns(['action'])
                     ->make(true);
         } 
-        return view('customerkain.index');
+        return view('DF.customerkain.index');
 
     }
 
@@ -46,7 +46,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('customerkain.index');
+        return view('DF.customerkain.index');
     }
 
     /**
@@ -77,7 +77,7 @@ class CustomerController extends Controller
     public function show(Customer_kain $customer)
     {
         
-        return view('customerkain.show');
+        return view('DF.customerkain.show');
         
     }
 
@@ -90,7 +90,7 @@ class CustomerController extends Controller
     public function edit(Customer_kain $customer)
     {
 
-        return view('customerkain.edit').compact('customer');
+        return view('DF.customerkain.edit').compact('customer');
     }
 
     /**
@@ -109,7 +109,7 @@ class CustomerController extends Controller
     
         Customer_kain::update($request->all());
     
-        return redirect()->route('customerkain.index')
+        return redirect()->route('DF.customerkain.index')
                         ->with('success','Invoice telah dibuat.');
     }
 
@@ -123,7 +123,7 @@ class CustomerController extends Controller
     {
         $customer = Customer_kain::find($id);
         $customer->delete();
-        return redirect()->route('customerkain.index')
+        return redirect()->route('DF.customerkain.index')
                         ->with('success','Benang deleted successfully');
     }
 }
