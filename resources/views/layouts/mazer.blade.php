@@ -86,7 +86,6 @@
     <script src="{{ asset('assets/js/pages/form-element-select.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.js') }}"></script>
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    
     <!-- POP UP JS-->
     <script src="../assets/libs/toastr/build/toastr.min.js"></script>
     <script src="assets/extensions/sweetalert2/sweetalert2.min.js"></script>

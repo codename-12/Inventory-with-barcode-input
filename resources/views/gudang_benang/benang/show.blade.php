@@ -83,4 +83,3 @@
         </div>
     </div>
 @endsection
-<p class="text-center text-primary"><small>@Copyright Tridayamas Sinarpusaka 2022</small></p>

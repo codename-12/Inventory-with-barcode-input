@@ -9,13 +9,9 @@ class PengirimanBenang extends Model
 {
     use HasFactory;
     public $table = "pengiriman_benang";
-    /**
-     * The attributes that are mass assignable.
-     *	
-     * @var array
-     */
     protected $fillable = [
-         'tanggal', 
+         'tanggal',
+         'id_penerimaan',
          'id_rajut', 
          'SJ', 
          'tipe_benang', 

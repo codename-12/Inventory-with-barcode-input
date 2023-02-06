@@ -120,5 +120,5 @@
 @endsection
 @section('modal')
 @include('gudang_benang.benang.create')
-@include('gudang_benang.benang.edit')
+{{-- @include('gudang_benang.benang.edit') --}}
 @endsection

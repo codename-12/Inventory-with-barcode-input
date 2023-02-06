@@ -35,6 +35,7 @@ class BenangController extends Controller
                 return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('action', 'benang.actions')
+                        ->orderBy('created_at', 'desc')
                         ->rawColumns(['action'])
                         ->make(true);
             }

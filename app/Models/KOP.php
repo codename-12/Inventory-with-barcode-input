@@ -14,6 +14,7 @@ class KOP extends Model
       'NO_SSP-SJ',
       'id_customer',
       'tanggal',
+      'jenis_kain',
       'lebar',
       'ROL',
       'KG',
@@ -25,15 +26,7 @@ class KOP extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function penerimaans(): HasMany
-    {
-        return $this->hasMany(penerimaan_kain::class);
-    }
 
-    public function pengirimans(): HasMany
-    {
-        return $this->hasMany(pengiriman_kain::class);
-    }     
     public function customer()
     {
         return $this->belongsTo(Customer_kain::class, 'id_customer', 'id');
