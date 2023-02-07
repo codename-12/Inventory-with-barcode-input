@@ -38,7 +38,7 @@ class MasterBenangController extends Controller
                         ->make(true);
             }
             $suppliers = BenangSuppliers::all(); 
-            return view('masterbenang.index', compact('suppliers'));
+            return view('gudang_benang.masterbenang.index', compact('suppliers'));
     }   
     
     /**
@@ -86,13 +86,13 @@ class MasterBenangController extends Controller
     public function show(Master_benang $masterbenang)
     {
         $suppliers = BenangSuppliers::all(); 
-        return view('masterbenang.show',compact('masterbenang','suppliers' ));
+        return view('gudang_benang.masterbenang.show',compact('masterbenang','suppliers' ));
     }
 
     public function edit(Master_benang $masterbenang)
     {
         $suppliers = BenangSuppliers::all(); 
-        return view('masterbenang.edit',compact('masterbenang','suppliers'));
+        return view('gudang_benang.masterbenang.edit',compact('masterbenang','suppliers'));
     }
     
     /**

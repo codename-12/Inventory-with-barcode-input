@@ -55,6 +55,7 @@ Route::get('/', function () {
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['middleware' => ['auth']], function() {
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
 
@@ -81,4 +82,7 @@ Route::group(['middleware' => ['auth']], function() {
     //DIVISI DF
     Route::resource('KOP', KOPController::class);
     Route::resource('customerkain', CustomerController::class);
+    Route::resource('regkain_polos', DFregkain_polosController::class);
+    Route::resource('regkain_printing', DFregkain_printingController::class);
+    Route::resource('flow_cotton', DFProgresskainController::class);
 });

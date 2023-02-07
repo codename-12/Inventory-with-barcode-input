@@ -167,15 +167,16 @@
                   <span>Kartu Order Proses Printing</span></a>
               </li>
               <li>
-                <a href="#" class="sidebar-link">
+                <a href="<?php echo e(route('flow_cotton.index')); ?>" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
-                  <span>PROGRESS KAIN</span></a>
+                  <span>Register Kain Polos</span></a>
               </li>
               <li>
-                <a href="<?php echo e(route('GJpenerimaankain.index')); ?>" class="sidebar-link">
+                <a href="#" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
-                  <span>Barcode generate</span></a>
+                  <span>Progresskain</span></a>
               </li>
+              
             </ul>
           </li>
            <li class="sidebar-item has-sub">

@@ -55,13 +55,13 @@ class DFregkain_polosController extends Controller
    public function store(Request $request)
    {
        request()->validate([
-            'kode_barang' => 'required',
-           'tanggal' => 'required',
-           'warna' => 'required',
-           'KOP' => 'required',
-           'LOT'=> 'required',
-           'ROL' => 'required',
-           'KG' => 'required|numeric',
+           'kode_barang' => 'required',
+           'tanggal'     => 'required',
+           'warna'       => 'required',
+           'KOP'         => 'required',
+           'LOT'         => 'required',
+           'ROL'         => 'required',
+           'KG'          => 'required|numeric',
            'jenis_stock' => 'required',
            'keterangan',
        ]);

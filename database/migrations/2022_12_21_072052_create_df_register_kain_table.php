@@ -31,7 +31,7 @@ return new class extends Migration
             $table->date('tanggal'); 
             $table->string('kode_desain');
             $table->foreignId('kop')
-            ->constrained('kartu_order_proses')
+            ->constrained('kartu_order_proses_printing')
             ->onUpdate('cascade')
             ->onDelete('cascade');
             $table->string('LOT');

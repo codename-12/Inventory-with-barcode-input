@@ -16,6 +16,14 @@ class PermissionTableSeeder extends Seeder
     public function run()
     {
         $permissions = [
+            'DFprogress-list',
+            'DFprogress-create',
+            'DFprogress-edit',
+            'DFprogress-delete',
+            'DFregkain_polos-list',
+            'DFregkain_polos-create',
+            'DFregkain_polos-edit',
+            'DFregkain_polos-delete',
             'KOP-list',
             'KOP-create',
             'KOP-edit',

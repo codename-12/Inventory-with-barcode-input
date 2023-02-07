@@ -36,7 +36,7 @@ class SupplierBenangController extends Controller
                     ->make(true);
         }
         
-        return view('supbenang.index');
+        return view('gudang_benang.supbenang.index');
     }
 
     /**
@@ -46,7 +46,7 @@ class SupplierBenangController extends Controller
      */
     public function create()
     {
-        return view('supbenang.create');
+        return view('gudang_benang.supbenang.create');
     }
 
     /**
@@ -79,7 +79,7 @@ class SupplierBenangController extends Controller
      */
     public function show(BenangSuppliers $supbenang)
     {
-        return view('supbenang.show',compact('supbenang'));
+        return view('gudang_benang.supbenang.show',compact('supbenang'));
     }
 
     /**
@@ -90,7 +90,7 @@ class SupplierBenangController extends Controller
      */
     public function edit(BenangSuppliers $supbenang)
     {
-        return view('supbenang.edit',compact('supbenang'));
+        return view('gudang_benang.supbenang.edit',compact('supbenang'));
     }
 
     /**

@@ -42,7 +42,7 @@
         <tr>
             <th>No</th>
             <th>QR CODE</th>
-            <th>tanggal masuk</th>
+            <th></th>
             <th>Customer</th>
             <th>Jenis Kain</th>
             <th>Warna</th>  
