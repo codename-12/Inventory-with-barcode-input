@@ -29,7 +29,7 @@ class BPBBenangController extends Controller
     public function index(Request $request,BPB_benang $bpbbenang)
     {
         if ($request->ajax()) {
-            $data = BPB_benang::select('*')->with(['bsuppliers']);
+            $data = BPB_benang::select('*')->with('bsuppliers');
             return Datatables::of($data)
                     ->addIndexColumn()
                     ->addColumn('action', 'BPBbenang.actions')

@@ -1,7 +1,7 @@
-<form action="{{ route('regkain.destroy',$id) }}" method="POST">
-    <a class="btn btn-info" href="{{ route('GJpenerimaankain.show',$id) }}">Show</a>
+<form action="{{ route('regkain_polos.destroy',$id) }}" method="POST">
+    <a class="btn btn-info" href="{{ route('regkain_polos.show',$id) }}">Show</a>
     @can('GJstock-edit')
-    <a class="btn icon btn-primary" href="{{ route('GJpenerimaankain.edit',$id) }}"><i class="bi bi-pencil-square"></i></a>
+    <a class="btn icon btn-primary" href="{{ route('regkain_polos.edit',$id) }}"><i class="bi bi-pencil-square"></i></a>
     @endcan
 
     @csrf

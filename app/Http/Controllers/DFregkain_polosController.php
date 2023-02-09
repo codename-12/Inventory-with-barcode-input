@@ -22,7 +22,7 @@ class DFregkain_polosController extends Controller
    public function index(Request $request)
 {
     if ($request->ajax()) {
-        $data = DFregkain_polos::select('*')->with(['kops', 'customer']);
+        $data = DFregkain_polos::select('*')->with('no_kop');
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
@@ -34,7 +34,7 @@ class DFregkain_polosController extends Controller
                     //     'jenis_kain' => $row->jenis_kain,
                     //     'warna' => $row->warna,
                     // ]);
-                    $qr_code = DNS1D::getBarcodePNG($row->kode_barang, 'C39');
+                    $qr_code = DNS1D::getBarcodePNG($row->kode_kain, 'C39');
                     return ("<img class='qr-code' src='data:image/png;base64,".$qr_code."' alt='barcode' height='50'/>");
                 })
                 ->addColumn('action', 'DF.regkain_polos.actions')
@@ -42,7 +42,7 @@ class DFregkain_polosController extends Controller
                 ->make(true);
     }
     $kops = KOP::all();
-    return view('DF.regkain_polos.index', compact('kops','customers'));
+    return view('DF.regkain_polos.index', compact('kops'));
 }
 
    public function create()
@@ -55,14 +55,13 @@ class DFregkain_polosController extends Controller
    public function store(Request $request)
    {
        request()->validate([
-           'kode_barang' => 'required',
+           'kode_kain' => 'required',
            'tanggal'     => 'required',
            'warna'       => 'required',
-           'KOP'         => 'required',
+           'kop'         => 'required',
            'LOT'         => 'required',
            'ROL'         => 'required',
            'KG'          => 'required|numeric',
-           'jenis_stock' => 'required',
            'keterangan',
        ]);
    
@@ -90,11 +89,11 @@ class DFregkain_polosController extends Controller
    {
         request()->validate([
             'tanggal' => 'required',
-            'KOP' => 'required',
+            'kop' => 'required',
             'warna' => 'required',
             'LOT'=> 'required',
             'ROL' => 'required',
-            'KG' => 'required|numeric',
+            'KG' => 'required|decimal',
             'keterangan',
        ]);
    
@@ -105,10 +104,11 @@ class DFregkain_polosController extends Controller
    }
    
 
-   public function destroy(DFregkain_polos $regkainpolos)
-   {
-       $regkainpolos->delete();
-       return redirect()->route('DF.regkain_polos.index')
+   public function destroy($id)
+   {     
+        $regkainpolos = DFregkain_polos::find($id);
+        $regkainpolos->delete();
+        return redirect()->route('regkain_polos.index')
                        ->with('success','Data deleted successfully');
    }
 }

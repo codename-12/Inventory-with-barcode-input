@@ -40,10 +40,9 @@
     <table class="table table-bordered data-table">
         <thead>
         <tr>
-            <th>No</th>
+            <th>no</th>
             <th>QR CODE</th>
-            <th></th>
-            <th>Customer</th>
+            <th>tanggal</th>
             <th>Jenis Kain</th>
             <th>Warna</th>  
             <th>KOP</th>
@@ -61,15 +60,14 @@
               processing: true,
               serverSide: true,
               scrollX: true,
-              ajax: "{{ route('GJpenerimaankain.index') }}",
+              ajax: "{{ route('regkain_polos.index') }}",
               columns: [
                   {data: 'id', name: 'id'},
                   {data: 'qr_code', name: 'qr_code'},
                   {data: 'tanggal', name: 'tanggal'},
-                  {data: 'customer.nama_customer', name: 'customer.nama_customer'},
-                  {data: 'jenis_kain', name: 'jenis_kain'},
+                  {data: 'no_kop.jenis_kain', name: 'no_kop.jenis_kain'},
                   {data: 'warna', name: 'warna'},
-                  {data: 'kops.NO_KOP', name: 'kops.NO_KOP'},
+                  {data: 'no_kop.NO_KOP', name: 'no_kop.NO_KOP'},
                   {data: 'LOT', name: 'LOT'},
                   {data: 'ROL', name: 'ROL'},
                   {data: 'keterangan', name: 'keterangan'},
@@ -84,8 +82,8 @@
     </div>
 
 {{-- FORM  --}}
- @include('GJpenerimaankain.create')     
- @include('GJpenerimaankain.edit')
+@include('DF.regkain_polos.create')
+@include('DF.regkain_polos.edit')
 @endsection
 @section('script')
   

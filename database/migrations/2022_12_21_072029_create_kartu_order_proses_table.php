@@ -23,6 +23,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->date('tanggal');
             $table->string('jenis_kain');
+            $table->string('warna');
             $table->string('lebar');
             $table->string('ROL');
             $table->string('KG');
@@ -39,6 +40,7 @@ return new class extends Migration
             ->onDelete('cascade');
             $table->date('tanggal');
             $table->string('design');
+            $table->string('warna');
             $table->string('lebar');
             $table->string('ROL');
             $table->string('KG');

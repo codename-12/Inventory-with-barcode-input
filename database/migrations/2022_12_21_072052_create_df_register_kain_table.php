@@ -14,12 +14,14 @@ return new class extends Migration
     public function up()
     {
         Schema::create('df_regkain_polos', function (Blueprint $table) {
+            $table->id();
             $table->uuid('kode_kain')->unique();
             $table->date('tanggal');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->string('warna');
             $table->string('LOT');
             $table->string('ROL');
             $table->string('KG');
@@ -27,6 +29,7 @@ return new class extends Migration
             $table->timestamps();
         });
         Schema::create('df_regkain_printing', function (Blueprint $table) {
+            $table->id();
             $table->uuid('kode_kain')->unique();
             $table->date('tanggal'); 
             $table->string('kode_desain');

@@ -86,6 +86,17 @@ role="document"
      data-parsley-error-message="NOMOR KOP Harus diisi."
    />
  </div>
+ <label>Warna: </label>
+ <div class="form-group">
+   <input
+    type="text"
+    placeholder="CVC/BABYTERRY etc"
+    class="form-control"
+    name="warna"
+    data-parsley-required="true"
+    data-parsley-error-message="NOMOR KOP Harus diisi."
+  />
+</div>
    <label>Lebar: </label>
    <div class="form-group">
      <input

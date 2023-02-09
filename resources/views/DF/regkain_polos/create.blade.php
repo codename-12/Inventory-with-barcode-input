@@ -25,12 +25,12 @@ role="document"
 <i data-feather="x"></i>
 </button>
 </div>
-<form action="{{ route('GJpenerimaankain.store') }}" method="POST" data-parsley-validate>
+<form action="{{ route('regkain_polos.store') }}" method="POST" data-parsley-validate>
  @csrf
  <div class="modal-body">
-  <label>Kode Barang: </label>
+  <label>Kode Kain: </label>
    <div class="form-group">
-    <input type="text" class="form-control" name="kode_barang" value="{{ bin2hex(random_bytes(3)) }}" readonly>
+    <input type="text" class="form-control" name="kode_kain" value="{{ bin2hex(random_bytes(3)) }}" readonly>
   </div>
   <label>Tanggal: </label>
    <div class="form-group">
@@ -59,7 +59,7 @@ role="document"
     <select
         class="choices form-select shadow-none"
         style="width: 100%; height: 36px"
-        id="KOP" name="KOP"
+        id="KOP" name="kop"
         data-parsley-required="true"
        data-parsley-error-message="Pilih BPB Terbaru">
        @foreach ($kops as $kop)
@@ -75,7 +75,7 @@ role="document"
       class="form-control"
       name="LOT"
       data-parsley-required="true"
-      data-parsley-error-message="NOMOR KOP Harus diisi."
+      data-parsley-error-message="NOMOR LOT Harus diisi."
     />
   </div>
   <label>ROL: </label>
@@ -86,7 +86,7 @@ role="document"
       class="form-control"
       name="ROL"
       data-parsley-required="true"
-      data-parsley-error-message="NOMOR KOP Harus diisi."
+      data-parsley-error-message="ROL Harus diisi."
     />
   </div>
   <label>KG: </label>
@@ -99,59 +99,6 @@ role="document"
       data-parsley-required="true"
       data-parsley-error-message="NOMOR KOP Harus diisi."
     />
-  </div>
-  <label>Jenis Stock: </label>
-  <div class="form-check form-check-success">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="jenis_stock"
-      id="Success"
-      value="stock_polos"
-      checked
-    />
-    <label class="form-check-label" for="Success">
-      Stock Polos
-    </label>
-  </div>
-  <div class="form-check form-check-danger">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="jenis_stock"
-      id="Danger"
-      value="bs_polos"
-      checked
-    />
-    <label class="form-check-label" for="Danger">
-      BS POLOS
-    </label>
-  </div>
-  <div class="form-check form-check-success">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="jenis_stock"
-      id="Success"
-      value="stock_polos"
-      checked
-    />
-    <label class="form-check-label" for="Success">
-      Stock PRINTING
-    </label>
-  </div>
-  <div class="form-check form-check-danger">
-    <input
-      class="form-check-input"
-      type="radio"
-      name="jenis_stock"
-      id="Danger"
-      value="bs_polos"
-      checked
-    />
-    <label class="form-check-label" for="Danger">
-      BS PRINTING
-    </label>
   </div>
   <label>Keterangan: </label>
    <div class="form-group">

@@ -13,6 +13,7 @@ class DFregkain_polos extends Model
         'kode_kain',
         'tanggal',
         'kop',
+        'warna',
         'LOT',
         'ROL',
         'KG',
@@ -23,8 +24,12 @@ class DFregkain_polos extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function penerimaan(): HasMany
+    public function penerimaan()
     {
         return $this->hasMany(GJpenerimaan_kain::class, 'kode_kain', 'kode_kain');
+    }
+    public function no_kop()
+    {
+        return $this->belongsTo(KOP::class, 'kop', 'id');
     }
 }
