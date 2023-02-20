@@ -24,7 +24,7 @@ class GJPenerimaankainController extends Controller
    public function index(Request $request)
     {
     if ($request->ajax()) {
-        $data = GJpenerimaan_kain::select('*')->orderBy('created_at', 'desc');
+        $data = GJpenerimaan_kain::select('*')->with('kode')->orderBy('created_at', 'desc');
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
@@ -64,13 +64,13 @@ class GJPenerimaankainController extends Controller
 
     return redirect()->route('penerimaan_kain.index');
 }
-   public function show(penerimaan_kain $penerimaanpolos)
+   public function show(GJpenerimaan_kain $penerimaanpolos)
    {
         $kops = KOP::all(); 
        return view('GJ.GJpenerimaankain.show',compact('penerimaanpolos','kop'));
    }
 
-   public function edit(penerimaan_kain $penerimaanpolos)
+   public function edit(GJpenerimaan_kain $penerimaanpolos)
    {
        
         $kops = KOP::all(); 
@@ -78,7 +78,7 @@ class GJPenerimaankainController extends Controller
    }
    
  
-   public function update(Request $request, penerimaan_kain $penerimaanpolos)
+   public function update(Request $request, GJpenerimaan_kain $penerimaanpolos)
    {
         request()->validate([
         'tanggal_masuk' => 'required',
@@ -94,7 +94,7 @@ class GJPenerimaankainController extends Controller
    }
    
 
-   public function destroy(penerimaan_kain $penerimaanpolos)
+   public function destroy(GJpenerimaan_kain $penerimaanpolos)
    {
        $penerimaanpolos->delete();
        return redirect()->route('GJpenerimaankain.index')

@@ -51,6 +51,7 @@
             <th>KOP</th>
             <th>LOT</th>
             <th>ROL</th>
+            <th>kg</th>
             <th>keterangan</th>
             <th width="200px">Action</th> 
         </tr>

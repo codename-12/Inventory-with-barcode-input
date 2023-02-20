@@ -26,7 +26,7 @@ class DFregkain_polos extends Model
      */
     public function penerimaan()
     {
-        return $this->hasMany(GJpenerimaan_kain::class, 'kode_kain', 'kode_kain');
+        return $this->hasMany(GJpenerimaan_kain::class);
     }
     public function no_kop()
     {

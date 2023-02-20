@@ -2,14 +2,7 @@
 
 
 @section('content')
-@if(session('success'))
-    <div class="alert alert-success">{{ session('success') }}</div>
-@endif
-
-@if(session('error'))
-    <div class="alert alert-danger">{{ session('error') }}</div>
-@endif
-<form action="{{ route('GJpenerimaankain.store') }}" method="POST">
+<form action="{{ route('GJpenerimaankain.store') }}" method="post">
   @csrf
   <div class="form-group">
       <label for="tanggal_masuk">Tanggal Masuk</label>
@@ -21,7 +14,7 @@
   </div>
   <div class="form-group">
       <label for="kg">Berat (kg)</label>
-      <input type="text"  class="form-control" id="kg" name="kg" readonly>
+      <input type="text" class="form-control" id="kg" name="kg" readonly>
   </div>
   <div class="form-group">
       <label for="keterangan">Keterangan</label>
@@ -29,4 +22,5 @@
   </div>
   <button type="submit" class="btn btn-primary">Simpan</button>
 </form>
-@endsection
+
+    @endsection
