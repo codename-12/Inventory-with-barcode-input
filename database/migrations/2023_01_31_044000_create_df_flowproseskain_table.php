@@ -30,7 +30,6 @@ return new class extends Migration
         Schema::create('df_flowcotton', function (Blueprint $table) {
             $table->id();
             $table->uuid('kode_kain')->unique(); 
-            $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
             $table->boolean('sc')->nullable()->default(false);
             $table->boolean('peroxine_killer')->nullable()->default(false);
             $table->boolean('celup')->nullable()->default(false);

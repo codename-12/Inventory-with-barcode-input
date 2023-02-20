@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KOP;
-use App\Models\penerimaan_kain;
-use App\Models\Customer_kain;
+use App\Models\GJpenerimaan_kain;
+use App\Models\DFregkain_polos;
 use Illuminate\Http\Request;
 use Milon\Barcode\Facades\DNS2DFacade;
 use DNS1D;
@@ -23,88 +22,69 @@ class GJPenerimaankainController extends Controller
    }
 
    public function index(Request $request)
-{
+    {
     if ($request->ajax()) {
-        $data = penerimaan_kain::select('*')->with(['kops', 'customer']);
+        $data = GJpenerimaan_kain::select('*')->orderBy('created_at', 'desc');
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
-                    // $data = json_encode($row->kode_barang);
-                    // $data = json_encode([
-                    //     'kode_barang' => $row->kode_barang,
-                    //     'tanggal' => $row->tanggal,
-                    //     'customer' => $row->customer->nama_customer,
-                    //     'jenis_kain' => $row->jenis_kain,
-                    //     'warna' => $row->warna,
-                    // ]);
-                    $qr_code = DNS1D::getBarcodePNG($row->kode_barang, 'C39');
+                    $qr_code = DNS2D::getBarcodePNG($row->kode_kain, 'QRCODE');
                     return ("<img class='qr-code' src='data:image/png;base64,".$qr_code."' alt='barcode' height='50'/>");
                 })
                 ->addColumn('action', 'GJpenerimaankain.actions')
                 ->rawColumns(['action','qr_code'])
                 ->make(true);
     }
-    $customers = Customer_kain::all();
-    $kops = KOP::all();
-    return view('GJpenerimaankain.index', compact('kops','customers'));
-}
+    return view('GJ.GJpenerimaankain.index');
+    }
 
    public function create()
-   {
-       $kops = KOP::all(); 
-       $random = Str::random(6);
-       return view('GJpenerimaankain.index', compact('kops','random'));
+   {   
+
+       return view('GJ.GJpenerimaankain.create');
    }
    
    public function store(Request $request)
-   {
-       request()->validate([
-            'kode_barang' => 'required',
-           'tanggal' => 'required',
-           'id_customer' => 'required',
-           'jenis_kain' => 'required',
-           'warna' => 'required',
-           'KOP' => 'required',
-           'LOT'=> 'required',
-           'ROL' => 'required',
-           'KG' => 'required|numeric',
-           'jenis_stock' => 'required',
-           'keterangan',
-       ]);
-   
-       penerimaan_kain::create($request->all());
-   
-       return redirect()->route('GJpenerimaankain.index')
-                       ->with('success','Benang created successfully.');
-   }
-   
+{
+    // Mengambil input dari form
+    $input = $request->all();
+
+    // Mengambil data kode barang dari tabel df_regkain_polos
+    $kode_kain = $input['kode_kain'];
+    $regkain = DFregkain_polos::where('kode_kain', $kode_kain)->first();
+
+    // Simpan data penerimaan kain ke dalam tabel penerimaan_kain
+    $penerimaan_kain = new GJpenerimaan_kain;
+    $penerimaan_kain->tanggal_masuk = $input['tanggal_masuk'];
+    $penerimaan_kain->kg = $input['kg'];
+    $penerimaan_kain->save();
+
+    // Mengaitkan data penerimaan kain dengan data kode barang dari tabel df_regkain_polos
+    $penerimaan_kain->kode()->attach($regkain->id);
+
+    return redirect()->route('penerimaan_kain.index');
+}
    public function show(penerimaan_kain $penerimaanpolos)
    {
         $kops = KOP::all(); 
-       return view('GJpenerimaankain.show',compact('penerimaanpolos','kop'));
+       return view('GJ.GJpenerimaankain.show',compact('penerimaanpolos','kop'));
    }
 
    public function edit(penerimaan_kain $penerimaanpolos)
    {
        
         $kops = KOP::all(); 
-       return view('GJpenerimaankain.edit',compact('penerimaanpolos','kop'));
+       return view('GJ.GJpenerimaankain.edit',compact('penerimaanpolos','kop'));
    }
    
  
    public function update(Request $request, penerimaan_kain $penerimaanpolos)
    {
         request()->validate([
-            'tanggal' => 'required',
-            'id_customer' => 'required',
-            'jenis_kain' => 'required',
-            'warna' => 'required',
-            'KOP' => 'required',
-            'LOT'=> 'required',
-            'ROL' => 'required',
-            'KG' => 'required|numeric',
-            'jenis_stock' => 'required',
-            'keterangan',
+        'tanggal_masuk' => 'required',
+        'kode_kain'     => 'required',
+        'KG'            => 'required|numeric',
+        'keterangan',
        ]);
    
        $penerimaanpolos->update($request->all());

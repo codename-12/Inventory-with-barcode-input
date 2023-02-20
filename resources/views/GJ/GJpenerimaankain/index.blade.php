@@ -28,8 +28,10 @@
       </div>
       <div class="card">
         <div class="card-header">
-          <a data-bs-toggle="modal"
+          {{-- <a data-bs-toggle="modal"
         data-bs-target="#input" class="btn btn-success rounded-pill"
+          >Tambah Data</a> --}}
+          <a href="{{ route('GJpenerimaankain.create') }}" class="btn btn-success rounded-pill"
           >Tambah Data</a>
       <br/>
       <br/>
@@ -65,7 +67,7 @@
               columns: [
                   {data: 'id', name: 'id'},
                   {data: 'qr_code', name: 'qr_code'},
-                  {data: 'tanggal', name: 'tanggal'},
+                  {data: 'tanggal_masuk', name: 'tanggal_masuk'},
                   {data: 'customer.nama_customer', name: 'customer.nama_customer'},
                   {data: 'jenis_kain', name: 'jenis_kain'},
                   {data: 'warna', name: 'warna'},
@@ -84,8 +86,7 @@
     </div>
 
 {{-- FORM  --}}
- @include('GJpenerimaankain.create')     
- @include('GJpenerimaankain.edit')
+     
 @endsection
 @section('script')
   

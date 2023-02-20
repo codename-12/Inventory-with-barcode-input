@@ -125,7 +125,7 @@ class SupplierBenangController extends Controller
     {
         $supbenang->delete();
     
-        return redirect()->route('masterbenang.index')
+        return redirect()->route('supbenang.index')
                         ->with('success','Benang deleted successfully');
     }
 }

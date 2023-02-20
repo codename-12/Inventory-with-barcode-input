@@ -15,7 +15,6 @@ class KOP extends Model
       'id_customer',
       'tanggal',
       'jenis_kain',
-      'warna',
       'lebar',
       'ROL',
       'KG',

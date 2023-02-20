@@ -4,7 +4,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <div class="logo">
             <a href="{{ route('home') }}"
-              ><img src="{{ asset('assets/images/logo/logo.svg') }}" alt="Logo" srcset=""
+              ><img src="{{ asset('assets/images/logo/tridayalogo.svg') }}" alt="Logo" srcset=""
             /></a>
           </div>
           <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
@@ -13,7 +13,7 @@
               xmlns:xlink="http://www.w3.org/1999/xlink"
               aria-hidden="true"
               role="img"
-              class="iconify iconify--system-uicons"
+              class="iconify iconify--system-uicons" 
               width="20"
               height="20"
               preserveAspectRatio="xMidYMid meet"

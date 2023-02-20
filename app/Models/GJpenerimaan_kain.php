@@ -15,11 +15,6 @@ class GJpenerimaan_kain extends Model
     'kg'
     ];
 
-    /**
-     * The kode that belong to the GJpenerimaan_kain
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
     public function kode(): BelongsToMany
     {
         return $this->belongsToMany(DFregkain_polos::class, 'kode_kain', 'kode_kain');

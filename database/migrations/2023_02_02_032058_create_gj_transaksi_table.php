@@ -19,6 +19,7 @@ return new class extends Migration
             $table->uuid('kode_kain')->unique(); 
             $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
             $table->decimal('kg', 5, 2)->nullable()->default(0);
+            $table->string('keterangan')->nullable();
             $table->timestamps();
         });
         Schema::create('pengiriman_kain', function (Blueprint $table) {
