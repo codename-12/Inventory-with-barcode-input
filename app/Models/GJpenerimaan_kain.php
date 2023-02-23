@@ -15,9 +15,9 @@ class GJpenerimaan_kain extends Model
     'kg'
     ];
 
-    public function kode(): BelongsToMany
+    public function kode()
     {
-        return $this->belongsToMany(DFregkain_polos::class, 'kode_kain', 'id');
+        return $this->belongsTo(DFregkain_polos::class, 'kode_kain', 'kode_kain');
     }
 
 }

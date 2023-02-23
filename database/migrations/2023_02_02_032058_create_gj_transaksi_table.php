@@ -16,12 +16,13 @@ return new class extends Migration
         Schema::create('penerimaan_kain', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_masuk')->nullable()->default(date('Y-m-d'));
-            $table->uuid('kode_kain')->unique(); 
+            $table->string('kode_kain')->unique(); 
             $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
-            $table->decimal('kg', 5, 2)->nullable()->default(0);
+            $table->decimal('kg', 15, 2)->nullable()->default(0);
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });
+
         Schema::create('pengiriman_kain', function (Blueprint $table) {
             $table->id();
             $table->string('SP_NO');
@@ -29,7 +30,7 @@ return new class extends Migration
             ->constrained('penerimaan_kain')
             ->onUpdate('cascade')
             ->onDelete('cascade');  
-            $table->uuid('kode_kain')->unique(); 
+            $table->string('kode_kain')->unique(); 
             $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
             $table->string('NO_PO');
             $table->date('tanggal_kirim')->nullable()->default(date('Y-m-d'));

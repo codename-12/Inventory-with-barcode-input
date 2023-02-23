@@ -24,46 +24,67 @@ class GJPenerimaankainController extends Controller
    public function index(Request $request)
     {
     if ($request->ajax()) {
-        $data = GJpenerimaan_kain::select('*')->with('kode')->orderBy('created_at', 'desc');
+        $data = GJpenerimaan_kain::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
                     $qr_code = DNS2D::getBarcodePNG($row->kode_kain, 'QRCODE');
                     return ("<img class='qr-code' src='data:image/png;base64,".$qr_code."' alt='barcode' height='50'/>");
                 })
-                ->addColumn('action', 'GJpenerimaankain.actions')
+                ->addColumn('action', 'GJ.GJpenerimaankain.actions')
                 ->rawColumns(['action','qr_code'])
                 ->make(true);
     }
     return view('GJ.GJpenerimaankain.index');
     }
 
-   public function create()
-   {   
+    public function create()
+    {
+        $kode_kain = DFregkain_polos::select('kode_kain')->get();
 
-       return view('GJ.GJpenerimaankain.create');
-   }
-   
-   public function store(Request $request)
-{
-    // Mengambil input dari form
-    $input = $request->all();
+        return view('GJ.GJpenerimaankain.create' ,compact('kode_kain'));
+    }
 
-    // Mengambil data kode barang dari tabel df_regkain_polos
-    $kode_kain = $input['kode_kain'];
-    $regkain = DFregkain_polos::where('kode_kain', $kode_kain)->first();
+    public function store(Request $request)
+    {
+        $request->validate([
+            'tanggal_masuk' => 'required|date',
+            'kode_kain' => 'required|exists:df_regkain_polos,kode_kain',
+        ]);
+        // $kode_kain = explode(',', $request->kode_kain);
+        $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
+        $kg = $regkain ? $regkain->KG : null;
 
-    // Simpan data penerimaan kain ke dalam tabel penerimaan_kain
-    $penerimaan_kain = new GJpenerimaan_kain;
-    $penerimaan_kain->tanggal_masuk = $input['tanggal_masuk'];
-    $penerimaan_kain->kg = $input['kg'];
-    $penerimaan_kain->save();
+        $penerimaanKain = new GJpenerimaan_kain ([
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'kode_kain' => $request->kode_kain,
+            'kg' => $kg,
+        ]);
 
-    // Mengaitkan data penerimaan kain dengan data kode barang dari tabel df_regkain_polos
-    $penerimaan_kain->kode()->attach($regkain->id);
+        $penerimaanKain->save();
+    
+        return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
+    }
 
-    return redirect()->route('penerimaan_kain.index');
-}
+//     public function get_kg_by_kode_kain(Request $request)
+// {
+//     $kode_kain = $request->input('kode_kain');
+
+//     // query untuk mencari data regkain_polos berdasarkan kode kain
+//     $df_regkain_polos = DFregkain_polos::where('kode_kain', $kode_kain)->first();
+
+//     // jika data ditemukan, kirim respons JSON dengan nilai KG
+//     if ($df_regkain_polos) {
+//         return response()->json([
+//             'kg' => $df_regkain_polos->KG
+//         ]);
+//     } else {
+//         // jika data tidak ditemukan, kirim respons JSON kosong
+//         return response()->json([]);
+//     }
+// }
+
+
    public function show(GJpenerimaan_kain $penerimaanpolos)
    {
         $kops = KOP::all(); 

@@ -72,6 +72,7 @@ Route::group(['middleware' => ['auth']], function() {
     //gudang jadi
     Route::resource('GJstock', GJSTOCKController::class);
     Route::resource('GJpenerimaankain', GJPenerimaankainController::class);
+    Route::post('/GJpenerimaankain/get_kg_by_kode_kain', [App\Http\Controllers\GJPenerimaankainController::class, 'getKgByKodeKain'])->name('get_kg_by_kode_kain');
     Route::resource('GJstockpolos', GJstockpolosController::class);
     Route::resource('GJbspolos', GJbspolosController::class);
     Route::resource('GJpengirimankain', PengirimanKainController::class);

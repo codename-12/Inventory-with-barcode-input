@@ -22,7 +22,7 @@ class DFregkain_polosController extends Controller
    public function index(Request $request)
 {
     if ($request->ajax()) {
-        $data = DFregkain_polos::select('*')->with('no_kop');
+        $data = DFregkain_polos::select('*')->with(['no_kop','no_kop.customer']);
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {

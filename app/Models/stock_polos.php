@@ -34,7 +34,7 @@ class stock_polos extends Model
      * Get the customer that owns the penerimaan_kain_polos
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */     
+     */     9
     public function customer()
     {
         return $this->belongsTo(Customer_kain::class, 'id_customer', 'id');

@@ -40,9 +40,9 @@
     <table class="table table-bordered data-table">
         <thead>
         <tr>
-            <th>no</th>
             <th>QR CODE</th>
             <th>tanggal</th>
+            <th>Customer</th>
             <th>Jenis Kain</th>
             <th>Warna</th>  
             <th>KOP</th>
@@ -62,9 +62,9 @@
               scrollX: true,
               ajax: "{{ route('regkain_polos.index') }}",
               columns: [
-                  {data: 'id', name: 'id'},
                   {data: 'qr_code', name: 'qr_code'},
                   {data: 'tanggal', name: 'tanggal'},
+                  {data: 'no_kop.customer.nama_customer', name: 'no_kop.customer.nama_customer'},
                   {data: 'no_kop.jenis_kain', name: 'no_kop.jenis_kain'},
                   {data: 'warna', name: 'warna'},
                   {data: 'no_kop.NO_KOP', name: 'no_kop.NO_KOP'},

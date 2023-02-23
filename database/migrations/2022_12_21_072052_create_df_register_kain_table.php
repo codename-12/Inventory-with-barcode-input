@@ -11,11 +11,10 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up()        
     {
         Schema::create('df_regkain_polos', function (Blueprint $table) {
-            $table->id();
-            $table->uuid('kode_kain')->unique();
+            $table->string('kode_kain')->primary();
             $table->date('tanggal');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')
@@ -30,7 +29,7 @@ return new class extends Migration
         });
         Schema::create('df_regkain_printing', function (Blueprint $table) {
             $table->id();
-            $table->uuid('kode_kain')->unique();
+            $table->string('kode_kain')->unique();
             $table->date('tanggal'); 
             $table->string('kode_desain');
             $table->foreignId('kop')
