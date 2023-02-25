@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\GJpenerimaan_kain;
+use App\Models\GJ_stock_polos;
+use App\Models\GJ_bs_polos;
 use App\Models\DFregkain_polos;
 use Illuminate\Http\Request;
 use Milon\Barcode\Facades\DNS2DFacade;
@@ -50,6 +52,7 @@ class GJPenerimaankainController extends Controller
         $request->validate([
             'tanggal_masuk' => 'required|date',
             'kode_kain' => 'required|exists:df_regkain_polos,kode_kain',
+            'jenis' => 'required',
         ]);
         // $kode_kain = explode(',', $request->kode_kain);
         $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
@@ -62,6 +65,23 @@ class GJPenerimaankainController extends Controller
         ]);
 
         $penerimaanKain->save();
+
+        if($request->input('jenis') == 'stock_polos'){
+            $stock_polos = new GJ_stock_polos([
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'kode_kain' => $request->kode_kain,
+            'kg' => $kg,
+        ]);
+        $stock_polos->save();
+        }
+        elseif($request->input('jenis') == 'bs_polos'){
+            $bs_polos = new GJ_bs_polos([
+            'tanggal_masuk' => $request->tanggal_masuk,
+            'kode_kain' => $request->kode_kain,
+            'kg' => $kg,
+        ]);
+        $bs_polos->save();
+        }
     
         return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
     }
@@ -115,8 +135,9 @@ class GJPenerimaankainController extends Controller
    }
    
 
-   public function destroy(GJpenerimaan_kain $penerimaanpolos)
+   public function destroy($id)
    {
+        $penerimaanpolos = GJpenerimaan_kain::find($id);
        $penerimaanpolos->delete();
        return redirect()->route('GJpenerimaankain.index')
                        ->with('success','Data deleted successfully');

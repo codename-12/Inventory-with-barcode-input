@@ -28,6 +28,32 @@
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
+                        <label>Jenis Stock: </label>
+                        <div class="form-check form-check-success">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="jenis"
+                              id="jenis"
+                              value="stock_polos"
+                              checked
+                            />
+                            <label class="form-check-label" for="jenis">
+                              STOCK POLOS
+                            </label>
+                          </div>
+                          <div class="form-check form-check-danger">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="jenis"
+                              id="jenis"
+                              value="bs_polos"
+                            />
+                            <label class="form-check-label" for="jenis">
+                              BS POLOS
+                            </label>
+                        </div>
                         <div class="form-group">
                             <label for="kode_kain">Kode Kain</label>
                             <input type="text" class="form-control @error('kode_kain') is-invalid @enderror"
