@@ -22,11 +22,12 @@ use App\Http\Controllers\GJbsprintingController;
 use App\Http\Controllers\GJstockpolosController;
 use App\Http\Controllers\GJbspolosController;
 use App\Http\Controllers\GJSTOCKController;
-use App\Http\Controllers\PengirimanKainController;
+use App\Http\Controllers\GJPengirimanKainController;
 
 //divisi DF
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\KOPController;
+use App\Http\Controllers\KOPPController;
 use App\Http\Controllers\DFProgresskainController;
 use App\Http\Controllers\DFregkain_polosController;
 use App\Http\Controllers\DFregkain_printingController;
@@ -71,16 +72,14 @@ Route::group(['middleware' => ['auth']], function() {
 
     //gudang jadi
     Route::resource('GJstock', GJSTOCKController::class);
-    Route::resource('GJpenerimaankain', GJPenerimaankainController::class);
-    Route::post('/GJpenerimaankain/get_kg_by_kode_kain', [App\Http\Controllers\GJPenerimaankainController::class, 'getKgByKodeKain'])->name('get_kg_by_kode_kain');
     Route::resource('GJstockpolos', GJstockpolosController::class);
     Route::resource('GJbspolos', GJbspolosController::class);
-    Route::resource('GJpengirimankain', PengirimanKainController::class);
-    Route::resource('GJstockprinting', GJstockprintingController::class);
-    Route::resource('GJbsprinting', GJbsprintingController::class);
+    Route::resource('GJpenerimaankain', GJPenerimaankainController::class);
+    Route::resource('GJpengirimankain', GJPengirimanKainController::class);
     
     //DIVISI DF
     Route::resource('KOP', KOPController::class);
+    Route::resource('KOPP', KOPPController::class);
     Route::resource('customerkain', CustomerController::class);
     Route::resource('regkain_polos', DFregkain_polosController::class);
     Route::resource('regkain_printing', DFregkain_printingController::class);

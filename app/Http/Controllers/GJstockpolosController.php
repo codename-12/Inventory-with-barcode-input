@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KOP;
-use App\Models\stock_polos;
+use App\Models\GJ_stock_polos;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DataTables;
@@ -21,20 +21,18 @@ class GJstockpolosController extends Controller
    public function index(Request $request)
        {
            if ($request->ajax()) {
-               $data = stock_polos::select('*')->with(['kop','customer','penerimaan','pengiriman']);
+               $data = GJ_stock_polos::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                return Datatables::of($data)
-                       ->addIndexColumn()
-                       ->addColumn('action', 'GJstockpolos.action')
+                       ->addColumn('action', 'GJ.GJstockpolos.action')
                        ->rawColumns(['action'])
                        ->make(true);
            }
            
-           return view('GJstockpolos.index');
+           return view('GJ.GJstockpolos.index');
        }   
        public function create()
     {
-        $customers= Customer_kain::all();
-        return view('GJstockpolos.index', compact('customers'));
+
     }
     /**
      * Store a newly created resource in storage.
@@ -122,7 +120,7 @@ class GJstockpolosController extends Controller
      */
     public function destroy($id)
     {
-        $stockpolos = stock_polos::find($id);
+        $stockpolos = GJ_stock_polos::find($id);
         $stockpolos->delete();
         return redirect()->route('GJstockpolos.index')
                         ->with('success','Item deleted successfully');

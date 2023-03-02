@@ -26,11 +26,7 @@ return new class extends Migration
         Schema::create('pengiriman_kain', function (Blueprint $table) {
             $table->id();
             $table->string('SP_NO');
-            $table->foreignId('id_penerimaan')
-            ->constrained('penerimaan_kain')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');  
-            $table->string('kode_kain')->unique(); 
+            $table->text('kode_kain')->unique(); 
             $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
             $table->string('NO_PO');
             $table->date('tanggal_kirim')->nullable()->default(date('Y-m-d'));

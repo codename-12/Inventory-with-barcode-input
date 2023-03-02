@@ -57,16 +57,11 @@
                         <div class="form-group">
                             <label for="kode_kain">Kode Kain</label>
                             <input type="text" class="form-control @error('kode_kain') is-invalid @enderror"
-                                id="kode_kain" name="kode_kain" value="{{ old('kode_kain') }}">
+                                id="kode_kain" name="kode_kain" value="{{ old('kode_kain') }}" autofocus>
                             @error('kode_kain')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
                         </div>
-                        {{-- <div class="form-group">
-                            <label for="kg">Kg</label>
-                            <input type="text" class="form-control" id="kg" name="kg"
-                                value="{{ $df_regkain_polos->KG ?? '' }}" readonly>
-                        </div> --}}
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>
                 </div>
@@ -74,30 +69,5 @@
         </div>
     </div>
 </div>
-
-{{-- <script>
-    $(document).ready(function() {
-        $('#kode_kain').on('change', function() {
-            var kode_kain = $(this).val();
-
-            // kirim permintaan ke server menggunakan AJAX
-            $.ajax({
-                url: "{{ url('/GJpenerimaankain/get_kg_by_kode_kain') }}",
-                type: "POST",
-                data: {
-                    _token: "{{ csrf_token() }}",
-                    kode_kain: kode_kain
-                },
-                success: function(data) {
-                    // isi nilai input kg dengan data yang diterima dari server
-                    $('#kg').val(data.kg);
-                },
-                error: function() {
-                    alert('Terjadi kesalahan saat memproses permintaan.');
-                }
-            });
-        });
-    });
-</script> --}}
 
 @endsection

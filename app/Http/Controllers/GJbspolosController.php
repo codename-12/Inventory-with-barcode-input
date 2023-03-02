@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KOP;
-use App\Models\bs_polos;
+use App\Models\GJ_bs_polos;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DataTables;
@@ -21,20 +21,19 @@ class GJbspolosController extends Controller
    public function index(Request $request)
        {
            if ($request->ajax()) {
-               $data = bs_polos::select('*')->with(['kop', 'customer', 'penerimaan', 'pengiriman']);
+               $data = GJ_bs_polos::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                return Datatables::of($data)
                        ->addIndexColumn()
-                       ->addColumn('action', 'GJstock.actions')
+                       ->addColumn('action', 'GJ.GJbspolos.action')
                        ->rawColumns(['action'])
                        ->make(true);
            }
            
-           return view('GJstock.index');
+           return view('GJ.GJbspolos.index');
        }   
        public function create()
     {
-        $customers= Customer_kain::all();
-        return view('GJbspolos.index', compact('customers'));
+
     }
     /**
      * Store a newly created resource in storage.
@@ -56,7 +55,7 @@ class GJbspolosController extends Controller
         'keterangan',
         ]);
     
-        bs_polos::create($request->all());
+        GJ_bs_polos::create($request->all());
     
         return redirect()->route('GJbspolos.index')
                         ->with('success','Benang created successfully.');
@@ -69,7 +68,7 @@ class GJbspolosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(bs_polos $bs_polos)
+    public function show(GJ_bs_polos $GJ_bs_polos)
     {
         
         return view('GJbspolos.show');
@@ -82,10 +81,10 @@ class GJbspolosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(bs_polos $bs_polos)
+    public function edit(GJ_bs_polos $GJ_bs_polos)
     {
 
-        return view('GJbspolos.edit').compact('bs_polos');
+        return view('GJbspolos.edit').compact('GJ_bs_polos');
     }
 
     /**
@@ -95,7 +94,7 @@ class GJbspolosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,bs_polos $bs_polos)
+    public function update(Request $request,GJ_bs_polos $GJ_bs_polos)
     {
         request()->validate([
         'id_customer' => 'required',
@@ -109,7 +108,7 @@ class GJbspolosController extends Controller
         'keterangan',
         ]);
     
-        bs_polos::update($request->all());
+        GJ_bs_polos::update($request->all());
     
         return redirect()->route('GJbspolos.index')
                         ->with('success','Invoice telah dibuat.');
@@ -122,7 +121,7 @@ class GJbspolosController extends Controller
      */
     public function destroy($id)
     {
-        $bs_polos = bs_polos::find($id);
+        $bs_polos = GJ_bs_polos::find($id);
         $bs_polos->delete();
         return redirect()->route('GJbspolos.index')
                         ->with('success','Benang deleted successfully');

@@ -31,11 +31,10 @@ class BenangController extends Controller
     public function index(Request $request)
         {
             if ($request->ajax()) {
-                $data = PenerimaanBenang::select('*')->with(['bsuppliers','bpbs']);
+                $data = PenerimaanBenang::select('*')->with(['bsuppliers','bpbs'])->orderBy('created_at', 'desc');
                 return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('action', 'benang.actions')
-                        ->orderBy('created_at', 'desc')
                         ->rawColumns(['action'])
                         ->make(true);
             }

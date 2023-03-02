@@ -6,20 +6,22 @@
         scrollX: true,
         ajax: {
             url: "{{ route('GJstock.index') }}",
-            data: { tabel: 2 }
+            type: 'POST',
+            data: {table: 'table1', '_token': '{{ csrf_token() }}'}
         },
         columns: [
-            {data: 'id', name: 'id'},
-            {data: 'customer.nama_customer', name: 'customer.nama_customer'},
-            {data: 'jenis_kain', name: 'jenis_kain'},
-            {data: 'warna', name: 'warna'},
-            {data: 'kop.NO_KOP', name: 'kop.NO_KOP'},
-            {data: 'LOT', name: 'LOT'},
-            {data: 'ROL', name: 'ROL'},
-            {data: 'penerimaan.tanggal', name: 'penerimaan.tanggal'},
-            {data: 'pengiriman.tanggal', name: 'pengiriman.tanggal', defaultContent: ""},
-            {data: 'keterangan', name: 'keterangan'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+        {data: 'id', name: 'id'},
+        {data: 'qr_code', name: 'qr_code'},
+        {data: 'tanggal_masuk', name: 'tanggal_masuk'},
+        {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
+        {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+        {data: 'kode.warna', name: 'kode.warna'},
+        {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
+        {data: 'kode.LOT', name: 'kode.LOT'},
+        {data: 'kode.ROL', name: 'kode.ROL'},
+        {data: 'kg', name: 'kg'},
+        {data: 'kode.keterangan', name: 'kode.keterangan'},
+        {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 
@@ -29,20 +31,21 @@
         scrollX: true,
         ajax: {
             url: "{{ route('GJstock.index') }}",
-            data: { tabel: 1 }
+            data: {table: 'table2', '_token': '{{ csrf_token() }}'}
         },
         columns: [
-            {data: 'id', name: 'id'},
-            {data: 'customer.nama_customer', name: 'customer.nama_customer'},
-            {data: 'jenis_kain', name: 'jenis_kain'},
-            {data: 'warna', name: 'warna'},
-            {data: 'kop.NO_KOP', name: 'kop.NO_KOP'},
-            {data: 'LOT', name: 'LOT'},
-            {data: 'ROL', name: 'ROL'},
-            {data: 'penerimaan.tanggal', name: 'penerimaan.tanggal'},
-            {data: 'pengiriman.tanggal', name: 'pengiriman.tanggal', defaultContent: ""},
-            {data: 'keterangan', name: 'keterangan'},
-            {data: 'action', name: 'action', orderable: false, searchable: false},
+        {data: 'id', name: 'id'},
+        {data: 'qr_code', name: 'qr_code'},
+        {data: 'tanggal_masuk', name: 'tanggal_masuk'},
+        {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
+        {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+        {data: 'kode.warna', name: 'kode.warna'},
+        {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
+        {data: 'kode.LOT', name: 'kode.LOT'},
+        {data: 'kode.ROL', name: 'kode.ROL'},
+        {data: 'kg', name: 'kg'},
+        {data: 'kode.keterangan', name: 'kode.keterangan'},
+        {data: 'action', name: 'action', orderable: false, searchable: false},
         ]
     });
 });

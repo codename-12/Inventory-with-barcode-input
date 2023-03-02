@@ -66,11 +66,12 @@
             ajax: "{{ route('GJpengirimankain.index') }}",
             columns: [
                 {data: 'id', name: 'id'},
-                {data: 'id_customer', name: 'id_customer'},
+                {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
                 {data: 'SP_NO', name: 'SP_NO'},
-                {data: 'jenis_kain', name: 'jenis_kain'},
-                {data: 'KOP', name: 'KOP'},
-                {data: 'kode_barang.kode_barang', name: 'kode_barang.kode_barang'},
+                {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+                {data: 'kode.warna', name: 'kode.warna'},
+                {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
+                {data: 'kode.kain', name: 'kode_kain'},
                 {data: 'NO_PO', name: 'NO_PO'},
                 {data: 'TOTAL', name: 'TOTAL'},
                 {data: 'tanggal', name: 'tanggal'},
@@ -86,5 +87,5 @@
     </div>
 @endsection
 @section('modal')
-@include('GJpengirimankain.create')
+@include('GJ.GJpengirimankain.create')
 @endsection

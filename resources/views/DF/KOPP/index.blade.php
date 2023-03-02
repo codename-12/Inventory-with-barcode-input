@@ -61,13 +61,15 @@
               processing: true,
               serverSide: true,
               scrollX: true,
-              ajax: "{{ route('KOP.index') }}",
+              ajax: "{{ route('KOPP.index') }}",
               columns: [
                   {data: 'id', name: 'id'},
                   {data: 'NO_KOP', name: 'NO_KOP'},
                   {data: 'NO_SSP-SJ', name: 'NO_SSP-SJ'},
                   {data: 'customer.nama_customer', name: 'customer.nama_customer'},
                   {data: 'tanggal', name: 'tanggal'},
+                  {data: 'design', name: 'design'},
+                  {data: 'warna', name: 'warna'},
                   {data: 'lebar', name: 'lebar'},
                   {data: 'ROL', name: 'ROL'},
                   {data: 'KG', name: 'KG'},
@@ -159,6 +161,17 @@
                 data-parsley-error-message="Tanggal Harus diisi."
               />
             </div>
+            <label>Design: </label>
+             <div class="form-group">
+               <input
+                type="text"
+                placeholder="NOMOR KOP"
+                class="form-control"
+                name="lebar"
+                data-parsley-required="true"
+                data-parsley-error-message="NOMOR KOP Harus diisi."
+              />
+             </div>
              <label>Lebar: </label>
              <div class="form-group">
                <input

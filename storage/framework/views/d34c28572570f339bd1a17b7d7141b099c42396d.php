@@ -162,7 +162,7 @@
                   <span>Kartu Order Proses</span></a>
               </li>
               <li>
-                <a href="<?php echo e(route('KOP.index')); ?>" class="sidebar-link">
+                <a href="<?php echo e(route('KOPP.index')); ?>" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
                   <span>Kartu Order Proses Printing</span></a>
               </li>
@@ -185,21 +185,31 @@
               <span>GUDANG KAIN JADI</span>
             </a>
             <ul class="submenu">
-
-              <li>
-                <a href="<?php echo e(route('GJpengirimankain.index')); ?>" class="sidebar-link">
-                  <i class="bi bi-box-seam-fill"></i>
-                  <span>Pengiriman Kain</span></a>
-              </li>
               <li>
                 <a href="<?php echo e(route('GJpenerimaankain.index')); ?>" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
                   <span>Penerimaan kain</span></a>
               </li>
               <li>
+                <a href="<?php echo e(route('GJpengirimankain.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-box-seam-fill"></i>
+                  <span>Pengiriman Kain</span></a>
+              </li>
+              <li>
                 <a href="<?php echo e(route('GJstock.index')); ?>" class="sidebar-link">
                   <i class="bi bi-layers"></i>
                   <span>STOCK KAIN</span></a>
+              </li>
+              <li>
+                <a href="<?php echo e(route('GJstockpolos.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-layers"></i>
+                  <span>STOCK POLOS</span></a>
+              </li>
+              
+              <li>
+                <a href="<?php echo e(route('GJbspolos.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-trash3"></i>
+                  <span>BS POLOS</span></a>
               </li>
               
             </ul>

@@ -60,30 +60,6 @@
               >BS POLOS</a
             >
           </li>
-          <li class="nav-item" role="presentation">
-            <a
-              class="nav-link"
-              id="printing-tab"
-              data-bs-toggle="tab"
-              href="#printing"
-              role="tab"
-              aria-controls="printing"
-              aria-selected="false"
-              >PRINTING</a
-            >
-          </li>
-          <li class="nav-item" role="presentation">
-            <a
-              class="nav-link"
-              id="bsprinting-tab"
-              data-bs-toggle="tab"
-              href="#bsprinting"
-              role="tab"
-              aria-controls="bsprinting"
-              aria-selected="false"
-              >BS PRINTING</a
-            >
-          </li>
         </ul>
         <div class="tab-content" id="myTabContent">
           <div
@@ -92,7 +68,7 @@
             role="tabpanel"
             aria-labelledby="polos-tab"
           >
-          @include('GJstock.polos')
+          @include('GJ.GJstock.polos')
           </div>
           <div
             class="tab-pane fade"
@@ -100,19 +76,10 @@
             role="tabpanel"
             aria-labelledby="bspolos-tab"
           >
-          @include('GJstock.bspolos')
-          </div>
-          <div
-            class="tab-pane fade"
-            id="contact"
-            role="tabpanel"
-            aria-labelledby="contact-tab"
-          >
-            
           </div>
         </div>
       </div>
     </div>
-    @include('GJstock.script')
+    @include('GJ.GJstock.script')
 </div>
 @endsection

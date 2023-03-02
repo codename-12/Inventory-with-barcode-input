@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\KOP;
-use App\Models\bs_polos;
-use App\Models\stock_polos;
-use App\Models\bs_printing;
-use App\Models\stock_printing;
-use App\Models\Customer_kain;
+use App\Models\GJpenerimaan_kain;
+use App\Models\GJ_stock_polos;
+use App\Models\GJ_bs_polos;
+use App\Models\DFregkain_polos;
 use Illuminate\Http\Request;
 use DataTables;
 
@@ -23,22 +21,18 @@ class GJSTOCKController extends Controller
     public function index(Request $request){
        if ($request->ajax()) {
            if ($request->tabel == '1') {
-            $data = bs_polos::select('*')->with(['kop','customer','penerimaan','pengiriman']);
+            $data = GJ_stock_polos::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                return Datatables::of($data)
                        ->addIndexColumn()
-                       ->addColumn('action', 'GJstockcetak.action')
-                       ->rawColumns(['action'])
                        ->make(true);
                
            } else if ($request->tabel == '2') {
-            $data = stock_polos::select('*')->with(['kop','customer','penerimaan','pengiriman']);
+            $data = GJ_bs_polos::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                return Datatables::of($data)
                        ->addIndexColumn()
-                       ->addColumn('action', 'GJstockpolos.action')
-                       ->rawColumns(['action'])
                        ->make(true);
            } 
         }
-       return view('GJstock.index');
+       return view('GJ.GJstock.index');
    }   
 }

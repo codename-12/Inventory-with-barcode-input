@@ -6,20 +6,22 @@
       </div>
       <div class="card-body">
       <div class="table-responsive">
-        <table id="table2" class="table table-bordered data-table">
+        <table id="table2" class="table table-bordered data-table2">
             <thead>
             <tr>
+              <tr>
                 <th>No</th>
+                <th>QR CODE</th>
+                <th>tanggal masuk</th>
                 <th>Customer</th>
                 <th>Jenis Kain</th>
-                <th>Warna</th>
+                <th>Warna</th>  
                 <th>KOP</th>
                 <th>LOT</th>
                 <th>ROL</th>
-                <th>tanggal Masuk</th>
-                <th>tanggal Keluar</th>
+                <th>KG</th>
                 <th>keterangan</th>
-                <th width="200px">Action</th> 
+            </tr>
             </tr>
         </thead>
         </table>

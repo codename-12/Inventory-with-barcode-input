@@ -162,7 +162,7 @@
                   <span>Kartu Order Proses</span></a>
               </li>
               <li>
-                <a href="{{ route('KOP.index') }}" class="sidebar-link">
+                <a href="{{ route('KOPP.index') }}" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
                   <span>Kartu Order Proses Printing</span></a>
               </li>
@@ -185,38 +185,37 @@
               <span>GUDANG KAIN JADI</span>
             </a>
             <ul class="submenu">
-
-              <li>
-                <a href="{{ route('GJpengirimankain.index') }}" class="sidebar-link">
-                  <i class="bi bi-box-seam-fill"></i>
-                  <span>Pengiriman Kain</span></a>
-              </li>
               <li>
                 <a href="{{ route('GJpenerimaankain.index') }}" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
                   <span>Penerimaan kain</span></a>
               </li>
               <li>
+                <a href="{{ route('GJpengirimankain.index') }}" class="sidebar-link">
+                  <i class="bi bi-box-seam-fill"></i>
+                  <span>Pengiriman Kain</span></a>
+              </li>
+              <li>
                 <a href="{{ route('GJstock.index') }}" class="sidebar-link">
                   <i class="bi bi-layers"></i>
                   <span>STOCK KAIN</span></a>
               </li>
-              {{-- <li>
+              <li>
                 <a href="{{ route('GJstockpolos.index') }}" class="sidebar-link">
                   <i class="bi bi-layers"></i>
                   <span>STOCK POLOS</span></a>
               </li>
-              <li>
+              {{-- <li>
                 <a href="{{ route('GJstockprinting.index') }}" class="sidebar-link">
                   <i class="bi bi-layers-fill"></i>
                   <span>STOCK PRINTING</span></a>
-              </li>
+              </li> --}}
               <li>
                 <a href="{{ route('GJbspolos.index') }}" class="sidebar-link">
                   <i class="bi bi-trash3"></i>
                   <span>BS POLOS</span></a>
               </li>
-              <li>
+              {{-- <li>
                 <a href="{{ route('GJbsprinting.index') }}" class="sidebar-link">
                   <i class="bi bi-trash3-fill"></i>
                   <span>BS PRINTING</span></a>

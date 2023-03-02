@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class pengiriman_kain extends Model
+class GJpengiriman_kain extends Model
 {
     use HasFactory;
     public $table = "pengiriman_kain";
@@ -15,11 +15,10 @@ class pengiriman_kain extends Model
      * @var array
      */
     protected $fillable = [
-    'id_customer',
     'SP_NO',
-    'kode_kain', 
+    'kode_kain',
     'TOTAL',
-    'tanggal',
+    'tanggal_kirim',
     'NO_POL',
     'keterangan'
 
