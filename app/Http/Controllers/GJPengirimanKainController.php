@@ -29,70 +29,47 @@ class GJPengirimanKainController extends Controller
                        ->rawColumns(['action'])
                        ->make(true);
            }
-           $stock_polos = GJ_stock_polos::all();
-           $bs_polos = GJ_bs_polos::all();
-           return view('GJ.GJpengirimankain.index', compact('stock_polos', 'bs_polos'));
+           return view('GJ.GJpengirimankain.index');
        }   
        public function create()
     {
-       
+        $stock_polos = GJ_stock_polos::select('kode_kain')->get();
+        $bs_polos = GJ_bs_polos::select('kode_kain')->get();
+        return view('GJ.GJpengirimankain.create' ,compact('stock_polos','bs_polos'));
     }
 
     public function store(Request $request)
     {
-        $pengiriman = new GJpengiriman_kain;
+    $request->validate([
+        'tanggal_kirim' => 'required|date',
+        'kode_kain' => 'required',
+        'no_po'=> 'required',
         
-        $pengiriman->tanggal_pengiriman = $request->input('tanggal_pengiriman');
-        $pengiriman->nomor_po = $request->input('nomor_po');
-        $kode_kain = $request->input('kode_kain');
-        $pengiriman->kode_kain = json_encode($kode_kain);
-        
-        if (is_array($kode_kain)) {
-            $pengiriman->save();
-            foreach ($kode_kain as $value) {
-                GJ_stock_polos::where('kode_kain', $value)->delete();
-                $pengiriman->kode_kain()->attach($value);
-            }
-        } else {
-            $pengiriman->kode_kain = $kode_kain;
-            $pengiriman->save();
-            GJ_stock_polos::where('kode_kain', $kode_kain)->delete();
-        }
-        
-        return redirect()->route('GJpengirimankain.index')
-                        ->with('success','Data pengiriman berhasil ditambahkan.');
+    ]);
+
+    $pengiriman = new GJpengiriman_kain;
+    $pengiriman->tanggal_kirim = $request->input('tanggal_kirim');
+    $pengiriman->no_po = $request->input('no_po');
+    $kode_kain = $request->input('kode_kain');
+    $pengiriman->kode_kain = json_encode($kode_kain);
+
+    // ubah variabel $kode_kain menjadi array jika tidak sudah array
+    if (!is_array($kode_kain)) {
+        $kode_kain = [$kode_kain];
     }
 
+    GJ_stock_polos::whereIn('kode_kain', $kode_kain)->delete();   
+    GJ_bs_polos::whereIn('kode_kain', $kode_kain)->delete();
 
-        // request()->validate([
-        // 'SP_NO' => 'required',
-        // 'kode_kain' => 'required',
-        // 'NO_PO' => 'required',
-        // 'TOTAL' => 'required',
-        // 'tanggal' => 'required',
-        // 'NO_POL' => 'required',
-        // 'keterangan'
-        // ]);
-    
-        // GJpengiriman_kain::create($request->all());
-    
-        // if (is_array($kode_kain)) {
-        //     $pengiriman->save();
-        //     foreach ($kode_kain as $value) {
-        //         GJ_stock_polos::where('kode_kain', $kode_kain)->delete();
-        //         GJ_bs_polos::where('kode_kain', $kode_kain)->delete();
-        //         $pengiriman->kode_kain()->attach($value);
-        //     }
-        // } else {
-        //     $pengiriman->kode_kain = $kode_kain;
-        //     $pengiriman->save();
-        //     GJ_stock_polos::where('kode_kain', $kode_kain)->delete();
-        //     GJ_bs_polos::where('kode_kain', $kode_kain)->delete();
-        // }
-        // return redirect()->route('GJpengirimankain.index')
-        //                 ->with('success','Data pengiriman berhasil ditambahkan.');
-    
+    $pengiriman->save();
 
+    foreach ($kode_kain as $value) {
+        $pengiriman->kode()->attach($value);
+    }
+
+    return redirect()->route('GJpengirimankain.index')
+                     ->with('success', 'Data pengiriman berhasil ditambahkan.');
+}
     public function edit(GJpengiriman_kain $kop)
     {
 

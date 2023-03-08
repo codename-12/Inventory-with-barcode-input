@@ -25,13 +25,10 @@ return new class extends Migration
 
         Schema::create('pengiriman_kain', function (Blueprint $table) {
             $table->id();
-            $table->string('SP_NO');
-            $table->text('kode_kain')->unique(); 
-            $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
-            $table->string('NO_PO');
             $table->date('tanggal_kirim')->nullable()->default(date('Y-m-d'));
-            $table->string('TOTAL');
-            $table->string('NO_POL');
+            $table->string('no_po');
+            $table->json('kode_kain');
+            $table->decimal('kg', 15, 2)->nullable()->default(0);
             $table->string('keterangan')->nullable();
             $table->timestamps();
         });
@@ -44,7 +41,7 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('penerimaan_produksi_kain');
+        Schema::dropIfExists('penerimaan_kain');
         Schema::dropIfExists('pengiriman_kain');
     }
 };

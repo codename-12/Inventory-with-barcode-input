@@ -20,7 +20,7 @@
     <div class="page-heading">
       <div class="page-title">
         <div class="row">
-          <div class="col-12 col-md-6 order-md-1 order-last">
+          <div class="col-12 col-md-6 order-md-1 order-last"> 
             <h3>Data Pengiriman Kain</h3>
             <p class="text-subtitle text-muted">data ini terus ter update jika ada perubahan secara live.</p>
           </div>
@@ -29,8 +29,10 @@
     
       <div class="card">
         <div class="card-header">
-          <a data-bs-toggle="modal"
+          {{-- <a data-bs-toggle="modal"
         data-bs-target="#input" class="btn btn-success rounded-pill"
+          >Tambah Data</a> --}}
+          <a href="{{ route('GJpengirimankain.create') }}" class="btn btn-success rounded-pill"
           >Tambah Data</a>
       <br/>
       <br/>
@@ -38,19 +40,20 @@
         </div>
         <div class="card-body">
     <div class="container">
-    <table class="table table-striped data-table">
+      <table class="table table-bordered data-table">
         <thead>
         <tr>
             <th>No</th>
+            <th>QR CODE</th>
             <th>Customer</th>
-            <th>SP.NO</th>
-            <th>Jenis_kain</th>
+            <th>Jenis Kain</th>
+            <th>Warna</th>  
             <th>KOP</th>
-            <th>kode barang</th>
-            <th>NO. PO</th>
-            <th>TOTAL</th>
-            <th>tanggal</th>
-            <th>NO.POL MOBIL</th>
+            <th>LOT</th>
+            <th>ROL</th>
+            <th>KG</th>
+            <th>tanggal masuk</th>
+            <th>tanggal kirim</th>
             <th>keterangan</th>
             <th width="200px">Action</th> 
         </tr>
@@ -58,34 +61,32 @@
     </table>
     </div>
     <script type="text/javascript">
-      $(function () {
-        var table = $('.data-table').DataTable({
-            processing: true,
-            serverSide: true,
-            scrollX: true,
-            ajax: "{{ route('GJpengirimankain.index') }}",
-            columns: [
-                {data: 'id', name: 'id'},
-                {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
-                {data: 'SP_NO', name: 'SP_NO'},
-                {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
-                {data: 'kode.warna', name: 'kode.warna'},
-                {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
-                {data: 'kode.kain', name: 'kode_kain'},
-                {data: 'NO_PO', name: 'NO_PO'},
-                {data: 'TOTAL', name: 'TOTAL'},
-                {data: 'tanggal', name: 'tanggal'},
-                {data: 'NO_POL', name: 'NO_POL'},
-                {data: 'keterangan', name: 'keterangan'},
-                {data: 'action', name: 'action', orderable: false, searchable: false},
-            ]
+        $(function () {
+          var table = $('.data-table').DataTable({
+              processing: true,
+              serverSide: true,
+              scrollX: true,
+              ajax: "{{ route('GJpengirimankain.index') }}",
+              columns: [
+                  {data: 'id', name: 'id'},
+                  {data: 'qr_code', name: 'qr_code'},
+                  {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
+                  {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+                  {data: 'kode.warna', name: 'kode.warna'},
+                  {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
+                  {data: 'kode.LOT', name: 'kode.LOT'},
+                  {data: 'kode.ROL', name: 'kode.ROL'},
+                  {data: 'kg', name: 'kg'},
+                  {data: 'penerimaan.tanggal_masuk', name: 'penerimaan.tanggal_masuk'},
+                  {data: 'tanggal_kirim', name: 'tanggal_kirim'},
+                  {data: 'kode.keterangan', name: 'kode.keterangan'},
+                  {data: 'action', name: 'action', orderable: false, searchable: false},
+              ]
+          });
+          
         });
-      });
-    </script>
+      </script>
         </div>
       </div>
     </div>
-@endsection
-@section('modal')
-@include('GJ.GJpengirimankain.create')
 @endsection

@@ -195,11 +195,11 @@
                   <i class="bi bi-box-seam-fill"></i>
                   <span>Pengiriman Kain</span></a>
               </li>
-              <li>
+              {{-- <li>
                 <a href="{{ route('GJstock.index') }}" class="sidebar-link">
                   <i class="bi bi-layers"></i>
                   <span>STOCK KAIN</span></a>
-              </li>
+              </li> --}}
               <li>
                 <a href="{{ route('GJstockpolos.index') }}" class="sidebar-link">
                   <i class="bi bi-layers"></i>

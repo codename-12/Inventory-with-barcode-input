@@ -71,6 +71,7 @@ role="document"
       placeholder="Email Address"
       class="form-control"
       name="tanggal"
+      value="{{ old('tanggal_kirim') ?? date('Y-m-d') }}"
       data-parsley-required="true"
       data-parsley-error-message="Tanggal Harus diisi."
     />

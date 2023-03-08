@@ -195,11 +195,7 @@
                   <i class="bi bi-box-seam-fill"></i>
                   <span>Pengiriman Kain</span></a>
               </li>
-              <li>
-                <a href="<?php echo e(route('GJstock.index')); ?>" class="sidebar-link">
-                  <i class="bi bi-layers"></i>
-                  <span>STOCK KAIN</span></a>
-              </li>
+              
               <li>
                 <a href="<?php echo e(route('GJstockpolos.index')); ?>" class="sidebar-link">
                   <i class="bi bi-layers"></i>
