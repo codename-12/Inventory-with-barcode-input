@@ -22,7 +22,7 @@ class GJPengirimanKainController extends Controller
    public function index(Request $request)
        {
            if ($request->ajax()) {
-               $data = GJpengiriman_kain::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
+               $data = GJpengiriman_kain::select('*')->orderBy('created_at', 'desc');
                return Datatables::of($data)
                        ->addIndexColumn()
                        ->addColumn('action', 'GJpengirimankain.actions')

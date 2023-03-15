@@ -44,15 +44,8 @@
         <thead>
         <tr>
             <th>No</th>
-            <th>QR CODE</th>
-            <th>Customer</th>
-            <th>Jenis Kain</th>
-            <th>Warna</th>  
-            <th>KOP</th>
-            <th>LOT</th>
-            <th>ROL</th>
-            <th>KG</th>
-            <th>tanggal masuk</th>
+            <th>NO PO</th>
+            <th>KODE KAIN</th>
             <th>tanggal kirim</th>
             <th>keterangan</th>
             <th width="200px">Action</th> 
@@ -69,17 +62,10 @@
               ajax: "{{ route('GJpengirimankain.index') }}",
               columns: [
                   {data: 'id', name: 'id'},
-                  {data: 'qr_code', name: 'qr_code'},
-                  {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
-                  {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
-                  {data: 'kode.warna', name: 'kode.warna'},
-                  {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
-                  {data: 'kode.LOT', name: 'kode.LOT'},
-                  {data: 'kode.ROL', name: 'kode.ROL'},
-                  {data: 'kg', name: 'kg'},
-                  {data: 'penerimaan.tanggal_masuk', name: 'penerimaan.tanggal_masuk'},
+                  {data: 'no_po', name: 'no_po'},
+                  {data: 'kode_kain', name: 'kode_kain'},
                   {data: 'tanggal_kirim', name: 'tanggal_kirim'},
-                  {data: 'kode.keterangan', name: 'kode.keterangan'},
+                  {data: 'keterangan', name: 'keterangan'},
                   {data: 'action', name: 'action', orderable: false, searchable: false},
               ]
           });

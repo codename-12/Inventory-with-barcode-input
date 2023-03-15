@@ -43,6 +43,10 @@
         <tr>
             <th>No</th>
             <th>Nama Customer</th>
+            <th>NO TLP</th>
+            <th>Email</th>
+            <th>PT</th>
+            <th>Alamat</th>
             <th>Keterangan</th>
             <th width="200px">Action</th> 
         </tr>
@@ -58,6 +62,10 @@
               columns: [
                   {data: 'id', name: 'id'},
                   {data: 'nama_customer', name: 'nama_customer'},
+                  {data: 'no_tlp', name: 'no_tlp'},
+                  {data: 'email', name: 'email'},
+                  {data: 'PT', name: 'PT'},
+                  {data: 'alamat', name: 'alamat'},
                   {data: 'keterangan', name: 'keterangan'},
                   {data: 'action', name: 'action', orderable: false, searchable: false},
               ]

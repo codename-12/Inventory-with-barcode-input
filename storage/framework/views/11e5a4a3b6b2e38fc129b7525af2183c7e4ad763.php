@@ -24,6 +24,8 @@
     <script src="<?php echo e(asset('assets/extensions/jquery/jquery.min.js')); ?>"></script>
     <script src="<?php echo e(asset('assets/libs/jquery/dist/jquery.js')); ?>"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/searchbuilder/1.4.1/css/searchBuilder.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/datetime/1.4.0/css/dataTables.dateTime.min.css">
     <link
       rel="stylesheet"
       href="<?php echo e(asset('assets/extensions/datatables.net-bs5/css/dataTables.bootstrap5.min.css')); ?>"
@@ -47,6 +49,11 @@
       href="assets/images/logo/favicon.png"
       type="image/png"
     />
+    <style>
+      .overdue {
+          background-color: #ffaaaa !important; /* ubah warna latar belakang menjadi merah */
+      }
+    </style>
   </head>
 
   <body>

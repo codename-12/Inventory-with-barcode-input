@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Providers;
-
+use App\Events\GJpengirimanKainSaved;
+use App\Listeners\GJ_H_stok_polosListener;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
@@ -17,6 +18,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         Registered::class => [
             SendEmailVerificationNotification::class,
+        ],
+        
+        GJpengirimanKainSaved::class => [
+        GJ_H_stok_polosListener::class,
         ],
     ];
 

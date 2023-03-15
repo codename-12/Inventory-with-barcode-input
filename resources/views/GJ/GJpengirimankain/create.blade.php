@@ -47,7 +47,7 @@
                                       <option value="{{ $polos->kode_kain }}">{{ $polos->kode_kain }}</option>
                                     @endforeach
                                   </optgroup>
-                                  <optgroup label="POLOS">
+                                  <optgroup label="BS POLOS">
                                     @foreach ($bs_polos as $bs)
                                       <option value="{{ $bs->kode_kain }}">{{ $bs->kode_kain }}</option>
                                     @endforeach

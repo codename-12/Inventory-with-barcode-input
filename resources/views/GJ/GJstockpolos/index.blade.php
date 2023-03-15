@@ -56,28 +56,36 @@
       </table>
       </div>
       <script type="text/javascript">
-          $(function () {
-            var table = $('.data-table').DataTable({
-                processing: true,
-                serverSide: true,
-                scrollX: true,
-                ajax: "{{ route('GJstockpolos.index') }}",
-                columns: [
-                    {data: 'id', name: 'id'},
-                    {data: 'tanggal_masuk', name: 'tanggal_masuk'},
-                    {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
-                    {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
-                    {data: 'kode.warna', name: 'kode.warna'},
-                    {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
-                    {data: 'kode.LOT', name: 'kode.LOT'},
-                    {data: 'kode.ROL', name: 'kode.ROL'},
-                    {data: 'kg', name: 'kg'},
-                    {data: 'kode.keterangan', name: 'kode.keterangan'},
-                    {data: 'action', name: 'action', orderable: false, searchable: false},
-                ]
-            });
+      $(function () {
+        var table = $('.data-table').DataTable({
+        processing: true,
+        serverSide: true,
+        scrollX: true,
+        ajax: "{{ route('GJstockpolos.index') }}",
+        columns: [
+            {data: 'id', name: 'id'},
+            {data: 'tanggal_masuk', name: 'tanggal_masuk'},
+            {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
+            {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+            {data: 'kode.warna', name: 'kode.warna'},
+            {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
+            {data: 'kode.LOT', name: 'kode.LOT'},
+            {data: 'kode.ROL', name: 'kode.ROL'},
+            {data: 'kg', name: 'kg'},
+            {data: 'kode.keterangan', name: 'kode.keterangan'},
+            {data: 'action', name: 'action', orderable: false, searchable: false},
+        ],
+        "createdRow": function(row, data, dataIndex) {
+            var date = new Date(data.tanggal_masuk); // Ambil data tanggal dari kolom "tanggal_masuk"
+            var today = new Date(); // Tanggal hari ini
+            var oneMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()); // Tanggal satu bulan yang lalu
             
-          });
+            if (date < oneMonthAgo) {
+                $(row).addClass('overdue'); // Tambahkan kelas "overdue" ke baris
+            }
+        }
+       });
+    });
         </script>
   
       </div>

@@ -11,6 +11,10 @@ class Customer_kain extends Model
     public $table = "customer";
     protected $fillable = [
         'nama_customer',
+        'alamat',
+        'no_tlp',
+        'email',
+        'PT',
         'keterangan',
     ];
 

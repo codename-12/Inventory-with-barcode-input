@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string('nama_customer');
             $table->string('alamat')->nullable();
-            $table->string('no_telp')->nullable();
-            $table->string('no_email')->nullable();
+            $table->string('no_tlp')->nullable();
+            $table->string('email')->nullable();
             $table->string('PT')->nullable();
             $table->text('keterangan')->nullable();
             $table->timestamps();

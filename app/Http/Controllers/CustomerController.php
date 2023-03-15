@@ -59,6 +59,10 @@ class CustomerController extends Controller
     {
         request()->validate([
             'nama_customer' => 'required',
+            'alamat',
+            'no_tlp',
+            'email',
+            'PT',
             'keterangan',
         ]);
     
@@ -104,6 +108,10 @@ class CustomerController extends Controller
     {
         request()->validate([
             'nama_customer' => 'required',
+            'alamat',
+            'no_tlp',
+            'email',
+            'PT',
             'keterangan',
         ]);
     

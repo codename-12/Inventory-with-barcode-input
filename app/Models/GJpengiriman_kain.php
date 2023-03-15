@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Events\GJpengirimanKainSaved;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +14,9 @@ class GJpengiriman_kain extends Model
      *	
      * @var array
      */
+    protected $dispatchesEvents = [
+        'created' => GJpengirimanKainSaved::class,
+    ];
     protected $fillable = [
     'tanggal_kirim',
     'no_po',
