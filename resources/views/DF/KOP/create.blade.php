@@ -142,7 +142,10 @@ role="document"
       data-parsley-error-message="NOMOR KOP Harus diisi."
     />
   </div>
-  
+  <label>Keterangan: </label>
+         <div class="form-group">
+         <textarea name="keterangan" class="form-control" placeholder="isi keterangan"></textarea>
+        </div>
 </div>
    <div class="modal-footer">
      <button

@@ -12,13 +12,20 @@ class DFregkain_printing extends Model
     protected $fillable = [
         'kode_kain',
         'tanggal',
-        'id_customer',
-        'jenis_kain',
-        'kode_desain',
         'kop',
+        'warna',
         'LOT',
         'ROL',
         'KG',
         'keterangan',
     ];
+    public function penerimaan()
+    {
+        return $this->hasMany(GJpenerimaan_kain::class);
+    }
+    public function no_kop()
+    {
+        return $this->belongsTo(KOPP::class, 'kop', 'id');
+    }
+}
 }

@@ -21,7 +21,7 @@
       <div class="page-title">
         <div class="row">
           <div class="col-12 col-md-6 order-md-1 order-last">
-            <h3>Form Register Kain Polos</h3>
+            <h3>Form Register Kain Printing</h3>
             <p class="text-subtitle text-muted">data ini terus ter update jika ada perubahan secara live.</p>
           </div>
         </div>
@@ -40,7 +40,6 @@
     <table class="table table-bordered data-table">
         <thead>
         <tr>
-            <th>no</th>
             <th>QR CODE</th>
             <th>tanggal</th>
             <th>Jenis Kain</th>
@@ -60,9 +59,8 @@
               processing: true,
               serverSide: true,
               scrollX: true,
-              ajax: "{{ route('regkain_polos.index') }}",
+              ajax: "{{ route('regkain_printing.index') }}",
               columns: [
-                  {data: 'id', name: 'id'},
                   {data: 'qr_code', name: 'qr_code'},
                   {data: 'tanggal', name: 'tanggal'},
                   {data: 'no_kop.jenis_kain', name: 'no_kop.jenis_kain'},

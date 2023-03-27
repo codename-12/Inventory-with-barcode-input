@@ -26,14 +26,6 @@ class DFregkain_polosController extends Controller
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
-                    // $data = json_encode($row->kode_kain);
-                    // $data = json_encode([
-                    //     'kode_kain' => $row->kode_kain,
-                    //     'tanggal' => $row->tanggal,
-                    //     'customer' => $row->customer->nama_customer,
-                    //     'jenis_kain' => $row->jenis_kain,
-                    //     'warna' => $row->warna,
-                    // ]);
                     $qr_code = DNS2D::getBarcodePNG($row->kode_kain, 'QRCODE');
                     return ("<img class='qr-code' src='data:image/png;base64,".$qr_code."' alt='barcode' height='50'/>");
                 })
@@ -104,9 +96,9 @@ class DFregkain_polosController extends Controller
    }
    
 
-   public function destroy($id)
+   public function destroy($kode_kain)
    {     
-        $regkainpolos = DFregkain_polos::find($id);
+        $regkainpolos = DFregkain_polos::find($kode_kain);
         $regkainpolos->delete();
         return redirect()->route('regkain_polos.index')
                        ->with('success','Data deleted successfully');

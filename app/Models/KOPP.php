@@ -8,11 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class KOPP extends Model
 {
     use HasFactory;
-    public $table = "kartu_order_proses";
+    public $table = "kartu_order_proses_printing";
     protected $fillable = [
       'NO_KOP',
       'NO_SSP-SJ',
       'id_customer',
+      'jenis_kain',
       'tanggal',
       'design',
       'lebar',

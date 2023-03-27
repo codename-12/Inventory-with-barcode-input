@@ -130,7 +130,6 @@ class MasterBenangController extends Controller
     public function destroy(Master_benang $masterbenang)
     {
         $masterbenang->delete();
-    
         return redirect()->route('masterbenang.index')
                         ->with('success','Benang deleted successfully');
     }

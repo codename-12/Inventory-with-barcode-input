@@ -43,7 +43,6 @@ class GJPenerimaankainController extends Controller
     public function create()
     {
         $kode_kain = DFregkain_polos::select('kode_kain')->get();
-
         return view('GJ.GJpenerimaankain.create' ,compact('kode_kain'));
     }
 
@@ -54,7 +53,7 @@ class GJPenerimaankainController extends Controller
             'kode_kain' => 'required|exists:df_regkain_polos,kode_kain',
             'jenis' => 'required',
         ]);
-        // $kode_kain = explode(',', $request->kode_kain);
+        if
         $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
         $kg = $regkain ? $regkain->KG : null;
 
@@ -85,25 +84,6 @@ class GJPenerimaankainController extends Controller
     
         return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
     }
-
-//     public function get_kg_by_kode_kain(Request $request)
-// {
-//     $kode_kain = $request->input('kode_kain');
-
-//     // query untuk mencari data regkain_polos berdasarkan kode kain
-//     $df_regkain_polos = DFregkain_polos::where('kode_kain', $kode_kain)->first();
-
-//     // jika data ditemukan, kirim respons JSON dengan nilai KG
-//     if ($df_regkain_polos) {
-//         return response()->json([
-//             'kg' => $df_regkain_polos->KG
-//         ]);
-//     } else {
-//         // jika data tidak ditemukan, kirim respons JSON kosong
-//         return response()->json([]);
-//     }
-// }
-
 
    public function show(GJpenerimaan_kain $penerimaanpolos)
    {

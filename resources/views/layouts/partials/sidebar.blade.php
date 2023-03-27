@@ -3,9 +3,9 @@
       <div class="sidebar-header position-relative">
         <div class="d-flex justify-content-between align-items-center">
           <div class="logo">
-            <a href="{{ route('home') }}"
-              ><img src="{{ asset('assets/images/logo/tridayalogo.svg') }}" alt="Logo" srcset=""
-            /></a>
+            <a href="{{ route('home') }}">
+              <img src="{{ asset('assets/images/logo/tridayalogo.svg') }}" alt="Logo" srcset=""/>
+          </a>
           </div>
           <div class="theme-toggle d-flex gap-2 align-items-center mt-2">
             <svg
@@ -172,6 +172,11 @@
                   <span>Register Kain Polos</span></a>
               </li>
               <li>
+                <a href="{{ route('regkain_printing.index') }}" class="sidebar-link">
+                  <i class="bi bi-dropbox"></i>
+                  <span>Register Kain Printing</span></a>
+              </li>
+              <li>
                 <a href="{{ route('flow_cotton.index') }}" class="sidebar-link">
                   <i class="bi bi-dropbox"></i>
                   <span>Progresskain</span></a>
@@ -198,28 +203,28 @@
               {{-- <li>
                 <a href="{{ route('GJstock.index') }}" class="sidebar-link">
                   <i class="bi bi-layers"></i>
-                  <span>STOCK KAIN</span></a>
+                  <span>STOCK KAIN</span></a>W
               </li> --}}
               <li>
                 <a href="{{ route('GJstockpolos.index') }}" class="sidebar-link">
                   <i class="bi bi-layers"></i>
                   <span>STOCK POLOS</span></a>
               </li>
-              {{-- <li>
+              <li>
                 <a href="{{ route('GJstockprinting.index') }}" class="sidebar-link">
                   <i class="bi bi-layers-fill"></i>
                   <span>STOCK PRINTING</span></a>
-              </li> --}}
+              </li>
               <li>
                 <a href="{{ route('GJbspolos.index') }}" class="sidebar-link">
                   <i class="bi bi-trash3"></i>
                   <span>BS POLOS</span></a>
               </li>
-              {{-- <li>
+              <li>
                 <a href="{{ route('GJbsprinting.index') }}" class="sidebar-link">
                   <i class="bi bi-trash3-fill"></i>
                   <span>BS PRINTING</span></a>
-              </li>     --}}
+              </li>    
             </ul>
           </li>
           <li class="sidebar-item has-sub">

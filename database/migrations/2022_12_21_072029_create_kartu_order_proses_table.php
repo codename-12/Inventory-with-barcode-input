@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('ROL');
             $table->string('KG');
             $table->string('LOT');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
         Schema::create('kartu_order_proses_printing', function (Blueprint $table) {
@@ -37,6 +38,7 @@ return new class extends Migration
             ->constrained('customer')
             ->onUpdate('cascade')
             ->onDelete('cascade');
+            $table->string('jenis_kain');
             $table->date('tanggal');
             $table->string('design');
             $table->string('warna');
@@ -44,6 +46,7 @@ return new class extends Migration
             $table->string('ROL');
             $table->string('KG');
             $table->string('LOT');
+            $table->text('keterangan')->nullable();
             $table->timestamps();
         });
     }

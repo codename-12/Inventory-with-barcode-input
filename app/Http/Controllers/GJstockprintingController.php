@@ -23,17 +23,17 @@ class GJstockprintingController extends Controller
                 $data = stock_printing::select('*')->with(['kop', 'customer', 'penerimaan', 'pengiriman']);
                 return Datatables::of($data)
                         ->addIndexColumn()
-                        ->addColumn('action', 'GJbsprinting.actions')
+                        ->addColumn('action', 'GJstockprinting.actions')
                         ->rawColumns(['action'])
                         ->make(true);
             }
             
-            return view('GJstockprinting.index');
+            return view('GJ.GJstockprinting.index');
         }   
         public function create()
      {
          $customers= Customer_kain::all();
-         return view('GJbsprinting.index', compact('customers'));
+         return view('GJstockprinting.index', compact('customers'));
      }
      /**
       * Store a newly created resource in storage.
@@ -57,7 +57,7 @@ class GJstockprintingController extends Controller
      
          stock_printing::create($request->all());
      
-         return redirect()->route('GJbsprinting.index')
+         return redirect()->route('GJstockprinting.index')
                          ->with('success','Benang created successfully.');
      }
  
@@ -71,7 +71,7 @@ class GJstockprintingController extends Controller
      public function show(stock_printing $stock_printing)
      {
          
-         return view('GJbsprinting.show');
+         return view('GJstockprinting.show');
          
      }
  
@@ -84,7 +84,7 @@ class GJstockprintingController extends Controller
      public function edit(stock_printing $stock_printing)
      {
         $stock_printing = stock_printing::all();
-         return view('GJbsprinting.edit').compact('stock_printing');
+         return view('GJstockprinting.edit').compact('stock_printing');
      }
  
      /**
@@ -110,7 +110,7 @@ class GJstockprintingController extends Controller
      
          stock_printing::update($request->all());
      
-         return redirect()->route('GJbsprinting.index')
+         return redirect()->route('GJstockprinting.index')
                          ->with('success','Invoice telah dibuat.');
      }
      /**
@@ -123,7 +123,7 @@ class GJstockprintingController extends Controller
      {
          $stock_printing = stock_printing::find($id);
          $stock_printing->delete();
-         return redirect()->route('GJbsprinting.index')
+         return redirect()->route('GJstockprinting.index')
                          ->with('success','Benang deleted successfully');
      }
 }

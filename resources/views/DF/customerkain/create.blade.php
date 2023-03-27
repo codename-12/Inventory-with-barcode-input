@@ -39,12 +39,54 @@
             data-parsley-error-message="Nama Customer Harus diisi"
           />
         </div>
+        <label>NO TLP </label>
+         <div class="form-group">
+           <input
+            type="text"
+            placeholder="+62809xxx"
+            class="form-control"
+            name="no_tlp"
+            data-parsley-required="true"
+            data-parsley-error-message="NO TLP Harus diisi"
+          />
+        </div>
+        <label>Email </label>
+         <div class="form-group">
+           <input
+            type="text"
+            placeholder="user@email.com"
+            class="form-control"
+            name="email"
+            data-parsley-required="true"
+            data-parsley-error-message="Email Harus diisi"
+          />
+        </div>
+        <label>PT </label>
+         <div class="form-group">
+           <input
+            type="text"
+            placeholder="PT sejahtra"
+            class="form-control"
+            name="PT"
+            data-parsley-required="true"
+            data-parsley-error-message="PT Harus diisi"
+          />
+        </div>
+        <label>Alamat </label>
+         <div class="form-group">
+           <input
+            type="text"
+            placeholder="Alamat"
+            class="form-control"
+            name="alamat"
+            data-parsley-required="true"
+            data-parsley-error-message="Alamat Harus diisi"
+          />
+        </div>
         <label>Keterangan: </label>
          <div class="form-group">
          <textarea name="keterangan" class="form-control" placeholder="isi keterangan"></textarea>
         </div>
-
-
         </div>
          <div class="modal-footer">
            <button
