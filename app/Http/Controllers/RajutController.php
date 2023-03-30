@@ -120,7 +120,6 @@ class RajutController extends Controller
     public function destroy(Rajut_Benang $rajut)
     {
         $rajut->delete();
-    
         return redirect()->route('rajut.index')
                         ->with('success','Benang deleted successfully');
     }

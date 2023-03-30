@@ -53,7 +53,6 @@ class GJPenerimaankainController extends Controller
             'kode_kain' => 'required|exists:df_regkain_polos,kode_kain',
             'jenis' => 'required',
         ]);
-        if
         $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
         $kg = $regkain ? $regkain->KG : null;
 

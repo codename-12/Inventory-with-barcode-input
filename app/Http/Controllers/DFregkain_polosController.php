@@ -7,6 +7,7 @@ use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DNS1D;
 use DNS2D;
+use PDF;
 use DataTables;
 
 class DFregkain_polosController extends Controller
@@ -103,4 +104,14 @@ class DFregkain_polosController extends Controller
         return redirect()->route('regkain_polos.index')
                        ->with('success','Data deleted successfully');
    }
+
+
+   public function generatePDF($kode_kain)
+    {
+        $regkain_polos = DFregkain_polos::where('kode_kain', $kode_kain)->first();
+        $pdf = PDF::loadView('DF.regkain_polos.print', compact('regkain_polos'));
+        $pdf->setPaper('qr');
+        return $pdf->download('QR.pdf');
+    }
+
 }
