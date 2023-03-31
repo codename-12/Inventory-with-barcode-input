@@ -20,13 +20,14 @@
             </thead>
             <tbody>
             <tr style="height: 16px;">
-            <td style="min-width: 140px; height: 66px; width: 140px; text-align: center;" rowspan="5">
-                <img src="data:image/png;base64,{{ DNS2D::getBarcodePNG(''. $regkain_polos->kode_kain, 'QRCODE')  }}" alt="QR CODE" width="65" height="65" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: block; margin-left: auto; margin-right: auto;" />
+            <td style="min-width: 140px; height: 150px; width: 225px; text-align: center;" rowspan="5">
+                <img src="data:image/png;base64,{{ DNS2D::getBarcodePNG(''. $regkain_polos->kode_kain, 'QRCODE')  }}" alt="QR CODE" width="100" height="100" style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: block; margin-left: auto; margin-right: auto;" />
+                <br/>
                 <br/>
                 {{ $regkain_polos->kode_kain }}
                 </td>
             <td style="height: 16px; width: 87.8125px;">KOP</td>
-            <td style="width: 133.387px; height: 16px;">{{ $regkain_polos->kop }}</td>
+            <td style="width: 133.387px; height: 16px;">{{ $regkain_polos->no_kop->NO_KOP }}</td>
             </tr>
             <tr style="height: 10px;">
             <td style="height: 10px; width: 87.8125px;">Warna</td>

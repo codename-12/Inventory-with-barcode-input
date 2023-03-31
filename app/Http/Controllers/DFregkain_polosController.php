@@ -108,9 +108,8 @@ class DFregkain_polosController extends Controller
 
    public function generatePDF($kode_kain)
     {
-        $regkain_polos = DFregkain_polos::where('kode_kain', $kode_kain)->first();
-        $pdf = PDF::loadView('DF.regkain_polos.print', compact('regkain_polos'));
-        $pdf->setPaper('qr');
+        $regkain_polos = DFregkain_polos::where('kode_kain', $kode_kain)->with(['no_kop','no_kop.customer'])->first();
+        $pdf = PDF::loadView('DF.regkain_polos.print', compact('regkain_polos'))->setPaper('a6', 'landscape');
         return $pdf->download('QR.pdf');
     }
 

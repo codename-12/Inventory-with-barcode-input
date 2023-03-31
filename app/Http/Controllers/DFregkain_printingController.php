@@ -55,8 +55,9 @@ class DFregkain_printingController extends Controller
    public function store(Request $request)
    {
        request()->validate([
-           'kode_kain' => 'required',
+           'kode_kain'   => 'required',
            'tanggal'     => 'required',
+           'kode_desain' => 'required',
            'warna'       => 'required',
            'kop'         => 'required',
            'LOT'         => 'required',

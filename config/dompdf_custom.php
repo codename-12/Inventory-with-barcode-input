@@ -14,7 +14,7 @@ return [
     
     'custom_paper_sizes' => [
     
-        'qr' => [100, 200], // 10cm x 20cm
+        'qr' => [50, 100], // 10cm x 20cm
         
         '25cm' => [250, 250], // 25cm x 25cm
         
