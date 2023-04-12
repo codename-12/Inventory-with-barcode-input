@@ -1,0 +1,131 @@
+[33mcommit 7a70119bb55ee9dde4239286d6f24bd2a0d816f6[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Sat Apr 8 09:07:34 2023 +0700
+
+    printing
+
+[33mcommit b0316d0df88c36c95869417dd4d9e6e2c19c60ef[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Fri Mar 31 09:13:55 2023 +0700
+
+    print QR code Beres
+
+[33mcommit 397599876e43587060d01001e0131c3ca83d2f65[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Thu Mar 30 14:31:45 2023 +0700
+
+    qr code print beres
+
+[33mcommit 3bda904b9326f87f960abedc173a19bd83700b31[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Mon Mar 27 15:51:50 2023 +0700
+
+    senelu
+
+[33mcommit 0bdbbcb2b980c329e2b5be1596a52c739f10037b[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Wed Mar 15 11:35:31 2023 +0700
+
+    stock beres
+
+[33mcommit f40dbe9231daf82d6aa0ae665aca937d4522d340[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Wed Mar 8 14:12:15 2023 +0700
+
+    pengiriman beress
+
+[33mcommit 6bd2938b4792e465a76695eeb3f99c310e02ad59[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Thu Mar 2 10:32:12 2023 +0700
+
+    update
+
+[33mcommit 5a32d7ba6a562c79c9d4639b5a94666eab7aa541[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Thu Mar 2 10:31:49 2023 +0700
+
+    update pengiriman
+
+[33mcommit 8f92100a8f1fc2eb2749084b164ed8130d535cc8[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Sat Feb 25 13:50:39 2023 +0700
+
+    tabel stok beress
+
+[33mcommit 49fd9d204fc52a489b94a6cce12a6727433756f5[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Thu Feb 23 10:23:25 2023 +0700
+
+    barcode input beresss
+
+[33mcommit de0e869509e7f2a6cd316ee304ddd97d09f12a57[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Mon Feb 20 15:57:52 2023 +0700
+
+    penerimaan
+
+[33mcommit 8799058fbbfebf31c2496d2e8c4090919ec94915[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Mon Feb 20 15:57:41 2023 +0700
+
+    penerimaan
+
+[33mcommit 72644146c4841e8a07ffcdd5f515f250d382673a[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Thu Feb 9 13:12:21 2023 +0700
+
+    regkain_polos
+
+[33mcommit 7be2db82cc1cec61babbea919dd99ff90d51e504[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Tue Feb 7 15:04:14 2023 +0700
+
+    optimize migration
+
+[33mcommit b6697536cff6fc35ac20be062898cdd41b0c85a3[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Mon Feb 6 16:36:30 2023 +0700
+
+    controller regkain
+
+[33mcommit 844e5d980a6eb38c24b4f29134ce5ef924e3b495[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Mon Feb 6 14:09:43 2023 +0700
+
+    Models
+
+[33mcommit 34149a672d26d4c3b09f3f3994eca5ea279ac83f[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Thu Feb 2 15:55:45 2023 +0700
+
+    optimize structure
+
+[33mcommit 37e3a2b583630a5c197345b28e8507260b96dd4c[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Wed Feb 1 15:52:04 2023 +0700
+
+    optimize migration
+
+[33mcommit e946edc6647131028b20e5a22102799d536bdd6a[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Tue Jan 31 15:45:37 2023 +0700
+
+    compare master
+
+[33mcommit 57d21d3a82a35b326877bf2075780d34f14abbd1[m
+Author: codename-12 <kazekageryan22@gmail.com>
+Date:   Tue Jan 31 15:34:41 2023 +0700
+
+    main update
+
+[33mcommit e91454463e48f1c90937e56e37c70bc23a5531ce[m
+Author: codename-12 <58435889+codename-12@users.noreply.github.com>
+Date:   Tue Nov 29 14:00:45 2022 +0700
+
+    Update README.md
+
+[33mcommit d266401448a90cbb4f75207a67e7428c3ed1fe87[m
+Author: codename-12 <58435889+codename-12@users.noreply.github.com>
+Date:   Thu Nov 17 10:23:29 2022 +0700
+
+    Initial commit

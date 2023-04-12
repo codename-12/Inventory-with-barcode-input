@@ -13,7 +13,6 @@ class DFregkain_printing extends Model
         'kode_kain',
         'tanggal',
         'kop',
-        'desain',
         'warna',
         'LOT',
         'ROL',

@@ -89,7 +89,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('KOPP', KOPPController::class);
     Route::resource('customerkain', CustomerController::class);
     Route::resource('regkain_polos', DFregkain_polosController::class);
-    Route::get('generate-pdf/{kode_kain}', [DFregkain_polosController::class, 'generatePDF'])->name('regkain_polos.generatePDF');
+    Route::get('print/{kode_kain}', [DFregkain_polosController::class, 'print'])->name('regkain_polos.print');
     Route::resource('regkain_printing', DFregkain_printingController::class);
+    Route::get('generate-pdf/{kode_kain}', [DFregkain_printingController::class, 'generatePDF'])->name('regkain_printing.generatePDF');
     Route::resource('flow_cotton', DFProgresskainController::class);
 }); 

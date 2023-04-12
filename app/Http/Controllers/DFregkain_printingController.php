@@ -1,12 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\KOP;
+use App\Models\KOPP;
 use App\Models\DFregkain_printing;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DNS1D;
 use DNS2D;
+use PDF;
 use DataTables;
 
 class DFregkain_printingController extends Controller
@@ -34,20 +35,20 @@ class DFregkain_printingController extends Controller
                     //     'jenis_kain' => $row->jenis_kain,
                     //     'warna' => $row->warna,
                     // ]);
-                    $qr_code = DNS1D::getBarcodePNG($row->kode_kain, 'C39');
+                    $qr_code = DNS2D::getBarcodePNG($row->kode_kain, 'QRCODE');
                     return ("<img class='qr-code' src='data:image/png;base64,".$qr_code."' alt='barcode' height='50'/>");
                 })
                 ->addColumn('action', 'DF.regkain_printing.actions')
                 ->rawColumns(['action','qr_code'])
                 ->make(true);
     }
-    $kops = KOP::all();
+    $kops = KOPP::all();
     return view('DF.regkain_printing.index', compact('kops'));
 }
 
    public function create()
    {
-       $kops = KOP::all(); 
+       $kops   = KOPP::all();
        $random = Str::random(6);
        return view('DF.regkain_printing.index', compact('kops','random'));
    }
@@ -57,7 +58,6 @@ class DFregkain_printingController extends Controller
        request()->validate([
            'kode_kain'   => 'required',
            'tanggal'     => 'required',
-           'kode_desain' => 'required',
            'warna'       => 'required',
            'kop'         => 'required',
            'LOT'         => 'required',
@@ -74,14 +74,14 @@ class DFregkain_printingController extends Controller
    
    public function show(DFregkain_printing $regkainprinting)
    {
-        $kops = KOP::all(); 
+        $kops = KOPP::all(); 
        return view('DF.regkain_printing.show',compact('regkain_printing ','kop'));
    }
 
    public function edit(DFregkain_printing $regkain_printing )
    {
        
-        $kops = KOP::all(); 
+        $kops = KOPP::all(); 
        return view('DF.regkain_printing.edit',compact('regkain_printing ','kop'));
    }
    
@@ -89,13 +89,14 @@ class DFregkain_printingController extends Controller
    public function update(Request $request, DFregkain_printing $regkain_printing )
    {
         request()->validate([
-            'tanggal' => 'required',
-            'kop' => 'required',
-            'warna' => 'required',
-            'LOT'=> 'required',
-            'ROL' => 'required',
-            'KG' => 'required|decimal',
-            'keterangan',
+        'kode_kain'   => 'required',
+        'tanggal'     => 'required',
+        'warna'       => 'required',
+        'kop'         => 'required',
+        'LOT'         => 'required',
+        'ROL'         => 'required',
+        'KG'          => 'required|numeric',
+        'keterangan',
        ]);
    
        $regkain_printing ->update($request->all());
@@ -105,11 +106,17 @@ class DFregkain_printingController extends Controller
    }
    
 
-   public function destroy($id)
+   public function destroy($kode_kain)
    {     
-        $regkain_printing  = DFregkain_printing::find($id);
+        $regkain_printing = DFregkain_printing::where('kode_kain', $kode_kain)->first();
         $regkain_printing ->delete();
         return redirect()->route('regkain_printing.index')
                        ->with('success','Data deleted successfully');
    }
+   public function generatePDF($kode_kain)
+    {
+        $regkain_printing = DFregkain_printing::where('kode_kain', $kode_kain)->with(['no_kop','no_kop.customer'])->first();
+        $pdf = PDF::loadView('DF.regkain_printing.print', compact('regkain_printing'))->setPaper('a6', 'landscape');
+        return $pdf->download('QR.pdf');
+    }
 }

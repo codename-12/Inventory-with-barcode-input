@@ -43,6 +43,9 @@ class GJPenerimaankainController extends Controller
     public function create()
     {
         $kode_kain = DFregkain_polos::select('kode_kain')->get();
+        if (!$kode_kain) {
+            $kode_kain = DFregkain_printing::select('kode_kain')->get();
+        }
         return view('GJ.GJpenerimaankain.create' ,compact('kode_kain'));
     }
 
@@ -50,39 +53,70 @@ class GJPenerimaankainController extends Controller
     {
         $request->validate([
             'tanggal_masuk' => 'required|date',
-            'kode_kain' => 'required|exists:df_regkain_polos,kode_kain',
+            'kode_kain' => 'required|exists:df_regkain_polos,kode_kain|exists:df_regkain_printing,kode_kain',
             'jenis' => 'required',
         ]);
         $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
-        $kg = $regkain ? $regkain->KG : null;
+        if ($regkain) {
+            $kg = $regkain ? $regkain->KG : null;
 
-        $penerimaanKain = new GJpenerimaan_kain ([
-            'tanggal_masuk' => $request->tanggal_masuk,
-            'kode_kain' => $request->kode_kain,
-            'kg' => $kg,
-        ]);
+            $penerimaanKain = new GJpenerimaan_kain ([
+                'tanggal_masuk' => $request->tanggal_masuk,
+                'kode_kain' => $request->kode_kain,
+                'kg' => $kg,
+            ]);
 
-        $penerimaanKain->save();
+            $penerimaanKain->save();
 
-        if($request->input('jenis') == 'stock_polos'){
-            $stock_polos = new GJ_stock_polos([
-            'tanggal_masuk' => $request->tanggal_masuk,
-            'kode_kain' => $request->kode_kain,
-            'kg' => $kg,
-        ]);
-        $stock_polos->save();
+            if($request->input('jenis') == 'stock'){
+                $stock_polos = new GJ_stock_polos([
+                'tanggal_masuk' => $request->tanggal_masuk,
+                'kode_kain' => $request->kode_kain,
+                'kg' => $kg,
+                ]);
+                $stock_polos->save();
+                }
+            elseif($request->input('jenis') == 'bs'){
+                $bs_polos = new GJ_bs_polos([
+                'tanggal_masuk' => $request->tanggal_masuk,
+                'kode_kain' => $request->kode_kain,
+                'kg' => $kg,
+                ]);
+                $bs_polos->save();
+                }
+            return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
+
+        }elseif (!$regkain) {
+            $regkain = DFregkain_printing::where('kode_kain', $request->kode_kain)->first();
+            $kg = $regkain ? $regkain->KG : null;
+
+            $penerimaanKain = new GJpenerimaan_kain ([
+                'tanggal_masuk' => $request->tanggal_masuk,
+                'kode_kain' => $request->kode_kain,
+                'kg' => $kg,
+            ]);
+
+            $penerimaanKain->save();
+
+            if($request->input('jenis') == 'stock'){
+                $stock_printing = new GJ_stock_printing([
+                'tanggal_masuk' => $request->tanggal_masuk,
+                'kode_kain' => $request->kode_kain,
+                'kg' => $kg,
+                ]);
+                $stock_printing->save();
+                }
+            elseif($request->input('jenis') == 'bs'){
+                $bs_printing = new GJ_bs_printing([
+                'tanggal_masuk' => $request->tanggal_masuk,
+                'kode_kain' => $request->kode_kain,
+                'kg' => $kg,
+                ]);
+                $bs_printing->save();
+                }
+            return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
         }
-        elseif($request->input('jenis') == 'bs_polos'){
-            $bs_polos = new GJ_bs_polos([
-            'tanggal_masuk' => $request->tanggal_masuk,
-            'kode_kain' => $request->kode_kain,
-            'kg' => $kg,
-        ]);
-        $bs_polos->save();
-        }
-    
-        return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
-    }
+}
 
    public function show(GJpenerimaan_kain $penerimaanpolos)
    {

@@ -31,7 +31,6 @@ return new class extends Migration
             $table->id();
             $table->string('kode_kain')->unique();
             $table->date('tanggal'); 
-            $table->string('kode_desain');
             $table->string('warna');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses_printing')
