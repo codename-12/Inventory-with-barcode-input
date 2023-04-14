@@ -15,7 +15,7 @@ role="document"
 <div class="modal-content">
 <div class="modal-header bg-primary">
   <h4 class="modal-title" id="myModalLabel33">
-    KOP INPUT
+    KOPP INPUT
   </h4>
   <button
     type="button"
@@ -26,16 +26,16 @@ role="document"
 <i data-feather="x"></i>
 </button>
 </div>
-<form action="{{ route('KOP.store') }}" method="POST" data-parsley-validate>
+<form action="{{ route('KOPP.store') }}" method="POST" data-parsley-validate>
  @csrf
  <div class="modal-body">
-   <label>NOMOR KOP: </label>
+   <label>NOMOR KOPP: </label>
    <div class="form-group">
      <input
       type="text"
       placeholder="NOMOR KOP"
       class="form-control"
-      name="NO_KOP"
+      name="NO_KOPP"
       data-parsley-required="true"
       data-parsley-error-message="NOMOR KOP Harus diisi."
     />
@@ -71,7 +71,7 @@ role="document"
       placeholder="Email Address"
       class="form-control"
       name="tanggal"
-      value="{{ old('tanggal_kirim') ?? date('Y-m-d') }}"
+      value="{{ date('Y-m-d') }}"
       data-parsley-required="true"
       data-parsley-error-message="Tanggal Harus diisi."
     />
@@ -94,17 +94,6 @@ role="document"
     placeholder="CVC/BABYTERRY etc"
     class="form-control"
     name="design"
-    data-parsley-required="true"
-    data-parsley-error-message="NOMOR KOP Harus diisi."
-  />
-</div>
- <label>Warna: </label>
- <div class="form-group">
-   <input
-    type="text"
-    placeholder="CVC/BABYTERRY etc"
-    class="form-control"
-    name="warna"
     data-parsley-required="true"
     data-parsley-error-message="NOMOR KOP Harus diisi."
   />

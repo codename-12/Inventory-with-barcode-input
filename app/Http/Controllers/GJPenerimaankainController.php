@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\GJpenerimaan_kain;
 use App\Models\GJ_stock_polos;
 use App\Models\GJ_bs_polos;
+use App\Models\GJ_stock_printing;
+use App\Models\GJ_bs_printing;
 use App\Models\DFregkain_polos;
+use App\Models\DFregkain_printing;
 use Illuminate\Http\Request;
 use Milon\Barcode\Facades\DNS2DFacade;
 use DNS1D;
@@ -26,7 +29,7 @@ class GJPenerimaankainController extends Controller
    public function index(Request $request)
     {
     if ($request->ajax()) {
-        $data = GJpenerimaan_kain::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
+        $data = GJpenerimaan_kain::select('*')->with(['kain_polos','.kain_polos.no_kop','kain_polos.no_kop.customer','kain_printing','.kain_printing.no_kop','kain_printing.no_kop.customer',])->orderBy('created_at', 'desc');
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
@@ -53,11 +56,12 @@ class GJPenerimaankainController extends Controller
     {
         $request->validate([
             'tanggal_masuk' => 'required|date',
-            'kode_kain' => 'required|exists:df_regkain_polos,kode_kain|exists:df_regkain_printing,kode_kain',
+            'kode_kain' =>'required',
             'jenis' => 'required',
         ]);
         $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
-        if ($regkain) {
+        if ($regkain != NULL ) {
+            $regkain = DFregkain_polos::where('kode_kain', $request->kode_kain)->first();
             $kg = $regkain ? $regkain->KG : null;
 
             $penerimaanKain = new GJpenerimaan_kain ([
@@ -86,7 +90,7 @@ class GJPenerimaankainController extends Controller
                 }
             return redirect()->route('GJpenerimaankain.create')->with('success', 'Penerimaan kain berhasil ditambahkan');
 
-        }elseif (!$regkain) {
+        }elseif ($regkain == NULL) {
             $regkain = DFregkain_printing::where('kode_kain', $request->kode_kain)->first();
             $kg = $regkain ? $regkain->KG : null;
 

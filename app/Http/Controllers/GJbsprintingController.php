@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KOP;
-use App\Models\bs_printing;
+use App\Models\GJ_bs_printing;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DataTables;
@@ -21,7 +21,7 @@ class GJbsprintingController extends Controller
     public function index(Request $request)
         {
             if ($request->ajax()) {
-                $data = bs_printing::select('*')->with(['kop', 'customer', 'penerimaan', 'pengiriman']);
+                $data = GJ_bs_printing::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                 return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('action', 'GJbsprinting.actions')
@@ -29,7 +29,7 @@ class GJbsprintingController extends Controller
                         ->make(true);
             }
             
-            return view('GJbsprinting.index');
+            return view('GJ.GJbsprinting.index');
         }   
         public function create()
      {
@@ -56,7 +56,7 @@ class GJbsprintingController extends Controller
          'keterangan',
          ]);
      
-         bs_printing::create($request->all());
+         GJ_bs_printing::create($request->all());
      
          return redirect()->route('GJbsprinting.index')
                          ->with('success','Benang created successfully.');
@@ -69,7 +69,7 @@ class GJbsprintingController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function show(bs_printing $bs_printing)
+     public function show(GJ_bs_printing $GJ_bs_printing)
      {
          
          return view('GJbsprinting.show');
@@ -82,10 +82,10 @@ class GJbsprintingController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function edit(bs_printing $bs_printing)
+     public function edit(GJ_bs_printing $GJ_bs_printing)
      {
-        $bs_printing = bs_printing::all();
-         return view('GJbsprinting.edit').compact('bs_printing');
+        $GJ_bs_printing = GJ_bs_printing::all();
+         return view('GJbsprinting.edit').compact('GJ_bs_printing');
      }
  
      /**
@@ -95,7 +95,7 @@ class GJbsprintingController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function update(Request $request,bs_printing $bs_printing)
+     public function update(Request $request,GJ_bs_printing $GJ_bs_printing)
      {
          request()->validate([
          'id_customer' => 'required',
@@ -109,7 +109,7 @@ class GJbsprintingController extends Controller
          'keterangan',
          ]);
      
-         bs_printing::update($request->all());
+         GJ_bs_printing::update($request->all());
      
          return redirect()->route('GJbsprinting.index')
                          ->with('success','Invoice telah dibuat.');
@@ -122,8 +122,8 @@ class GJbsprintingController extends Controller
       */
      public function destroy($id)
      {
-         $bs_printing = bs_printing::find($id);
-         $bs_printing->delete();
+         $GJ_bs_printing = GJ_bs_printing::find($id);
+         $GJ_bs_printing->delete();
          return redirect()->route('GJbsprinting.index')
                          ->with('success','Benang deleted successfully');
      }

@@ -66,19 +66,55 @@
               scrollX: true,
               ajax: "{{ route('GJpenerimaankain.index') }}",
               columns: [
-                  {data: 'id', name: 'id'},
-                  {data: 'qr_code', name: 'qr_code'},
-                  {data: 'tanggal_masuk', name: 'tanggal_masuk'},
-                  {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
-                  {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
-                  {data: 'kode.warna', name: 'kode.warna'},
-                  {data: 'kode.no_kop.NO_KOP', name: 'kode.no_kop.NO_KOP'},
-                  {data: 'kode.LOT', name: 'kode.LOT'},
-                  {data: 'kode.ROL', name: 'kode.ROL'},
-                  {data: 'kg', name: 'kg'},
-                  {data: 'kode.keterangan', name: 'kode.keterangan'},
-                  {data: 'action', name: 'action', orderable: false, searchable: false},
-              ]
+                {data: 'id', name: 'id'},
+                {data: 'qr_code', name: 'qr_code'},
+                {data: 'tanggal_masuk', name: 'tanggal_masuk'},
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.no_kop.customer.nama_customer : row.kain_printing.no_kop.customer.nama_customer;
+                    },
+                    name: 'kain_polos.no_kop.customer.nama_customer'
+                },
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.no_kop.jenis_kain : row.kain_printing.no_kop.jenis_kain;
+                    },
+                    name: 'kain_polos.no_kop.jenis_kain'
+                },
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.warna : row.kain_printing.warna;
+                    },
+                    name: 'kain_polos.warna'
+                },
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.no_kop.NO_KOP : row.kain_printing.no_kop.NO_KOP;
+                    },
+                    name: 'kain_polos.no_kop.NO_KOP'
+                },
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.LOT : row.kain_printing.LOT;
+                    },
+                    name: 'kain_polos.LOT'
+                },
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.ROL : row.kain_printing.ROL;
+                    },
+                    name: 'kain_polos.ROL'
+                },
+                {data: 'kg', name: 'kg'},
+                {
+                    data: function(row) {
+                        return row.kain_polos ? row.kain_polos.keterangan : row.kain_printing.keterangan;
+                    },
+                    name: 'kain_polos.keterangan'
+                },
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ]
+
           });
           
         });

@@ -23,7 +23,7 @@
                             <label for="tanggal_masuk">Tanggal Masuk</label>
                             <input type="date" class="form-control @error('tanggal_masuk') is-invalid @enderror"
                                 id="tanggal_masuk" name="tanggal_masuk"
-                                value="{{ old('tanggal_masuk') ?? date('Y-m-d') }}">
+                                value="{{ date('Y-m-d') }}">
                             @error('tanggal_masuk')
                                 <div class="invalid-feedback">{{ $message }}</div>
                             @enderror
@@ -35,11 +35,11 @@
                               type="radio"
                               name="jenis"
                               id="jenis"
-                              value="stock_polos"
+                              value="stock"
                               checked
                             />
                             <label class="form-check-label" for="jenis">
-                              STOCK POLOS
+                              STOCK
                             </label>
                           </div>
                           <div class="form-check form-check-danger">
@@ -48,19 +48,16 @@
                               type="radio"
                               name="jenis"
                               id="jenis"
-                              value="bs_polos"
+                              value="bs"
                             />
                             <label class="form-check-label" for="jenis">
-                              BS POLOS
+                              BS
                             </label>
                         </div>
                         <div class="form-group">
                             <label for="kode_kain">Kode Kain</label>
                             <input type="text" class="form-control @error('kode_kain') is-invalid @enderror"
-                                id="kode_kain" name="kode_kain" value="{{ old('kode_kain') }}" autofocus>
-                            @error('kode_kain')
-                                <div class="invalid-feedback">{{ $message }}</div>
-                            @enderror
+                                id="kode_kain" name="kode_kain" autofocus>
                         </div>
                         <button type="submit" class="btn btn-primary">Tambah</button>
                     </form>

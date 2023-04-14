@@ -47,7 +47,6 @@
             <th>Customer</th>
             <th>Tanggal</th>
             <th>DESIGN</th>
-            <th>WARNA</th>
             <th>Lebar</th>
             <th>ROL</th>
             <th>KG</th>
@@ -66,12 +65,11 @@
               ajax: "{{ route('KOPP.index') }}",
               columns: [
                   {data: 'id', name: 'id'},
-                  {data: 'NO_KOP', name: 'NO_KOP'},
+                  {data: 'NO_KOPP', name: 'NO_KOPP'},
                   {data: 'NO_SSP-SJ', name: 'NO_SSP-SJ'},
                   {data: 'customer.nama_customer', name: 'customer.nama_customer'},
                   {data: 'tanggal', name: 'tanggal'},
                   {data: 'design', name: 'design'},
-                  {data: 'warna', name: 'warna'},
                   {data: 'lebar', name: 'lebar'},
                   {data: 'ROL', name: 'ROL'},
                   {data: 'KG', name: 'KG'},

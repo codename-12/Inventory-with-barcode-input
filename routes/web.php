@@ -74,6 +74,7 @@ Route::group(['middleware' => ['auth']], function() {
 
     //gudang jadi
     Route::resource('GJstock', GJSTOCKController::class);
+    
     Route::resource('GJstockprinting', GJstockprintingController::class);
     Route::resource('GJbsprinting', GJbsprintingController::class);
 

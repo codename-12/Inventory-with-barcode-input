@@ -23,18 +23,10 @@ class DFregkain_printingController extends Controller
    public function index(Request $request)
 {
     if ($request->ajax()) {
-        $data = DFregkain_printing::select('*')->with('no_kop');
+        $data = DFregkain_printing::select('*')->with(['no_kop','no_kop.customer']);
         return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('qr_code', function($row) {
-                    // $data = json_encode($row->kode_barang);
-                    // $data = json_encode([
-                    //     'kode_barang' => $row->kode_barang,
-                    //     'tanggal' => $row->tanggal,
-                    //     'customer' => $row->customer->nama_customer,
-                    //     'jenis_kain' => $row->jenis_kain,
-                    //     'warna' => $row->warna,
-                    // ]);
                     $qr_code = DNS2D::getBarcodePNG($row->kode_kain, 'QRCODE');
                     return ("<img class='qr-code' src='data:image/png;base64,".$qr_code."' alt='barcode' height='50'/>");
                 })

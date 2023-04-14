@@ -15,4 +15,10 @@ class GJ_H_bs_polos extends Model
         'tanggal_kirim',
         'keterangan',
     ];
+
+    public function kode()
+    {
+        return $this->belongsTo(DFregkain_polos::class, 'kode_kain', 'kode_kain');
+    }
+    
 }

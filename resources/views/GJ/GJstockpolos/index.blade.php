@@ -40,7 +40,7 @@
         <table class="table table-bordered data-table">
           <thead>
           <tr>
-              <th>No</th>
+              <th>ID</th>
               <th>tanggal masuk</th>
               <th>Customer</th>
               <th>Jenis Kain</th>

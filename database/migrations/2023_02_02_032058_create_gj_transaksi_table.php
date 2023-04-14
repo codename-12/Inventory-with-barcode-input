@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('penerimaan_kain', function (Blueprint $table) {
             $table->id();
             $table->date('tanggal_masuk')->nullable()->default(date('Y-m-d'));
-            $table->string('kode_kain')->unique(); 
-            $table->foreign('kode_kain')->references('kode_kain')->on('df_regkain_polos')->onDelete('cascade');
+            $table->string('kode_kain')->unique();
             $table->decimal('kg', 15, 2)->nullable()->default(0);
             $table->string('keterangan')->nullable();
             $table->timestamps();

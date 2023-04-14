@@ -65,7 +65,7 @@
                   {data: 'tanggal', name: 'tanggal'},
                   {data: 'no_kop.jenis_kain', name: 'no_kop.jenis_kain'},
                   {data: 'warna', name: 'warna'},
-                  {data: 'no_kop.NO_KOP', name: 'no_kop.NO_KOP'},
+                  {data: 'no_kop.NO_KOPP', name: 'no_kop.NO_KOPP'},
                   {data: 'LOT', name: 'LOT'},
                   {data: 'ROL', name: 'ROL'},
                   {data: 'keterangan', name: 'keterangan'},
@@ -80,8 +80,8 @@
     </div>
 
 {{-- FORM  --}}
-@include('DF.regkain_polos.create')
-@include('DF.regkain_polos.edit')
+@include('DF.regkain_printing.create')
+@include('DF.regkain_printing.edit')
 @endsection
 @section('script')
   

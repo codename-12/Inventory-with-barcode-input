@@ -32,7 +32,7 @@ return new class extends Migration
         });
         Schema::create('kartu_order_proses_printing', function (Blueprint $table) {
             $table->id();
-            $table->string('NO_KOP');
+            $table->string('NO_KOPP');
             $table->string('NO_SSP-SJ');
             $table->foreignId('id_customer')
             ->constrained('customer')
@@ -41,7 +41,6 @@ return new class extends Migration
             $table->string('jenis_kain');
             $table->date('tanggal');
             $table->string('design');
-            $table->string('warna');
             $table->string('lebar');
             $table->string('ROL');
             $table->string('KG');

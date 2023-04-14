@@ -8,26 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class GJ_bs_printing extends Model
 {
     use HasFactory;
-    public $table = "bs_printing";
+    public $table = "gj_bs_printing";
     protected $fillable = [
-        'kode_barang',
-        'id_customer',
-        'jenis_kain',
-        'warna',
-        'kop',
-        'LOT',
-        'ROL',
-        'id_penerimaan',
-        'id_pengiriman',
-        'keterangan',
+        'tanggal_masuk',
+        'kode_kain',
+        'kg'
     ];
-    /**
-     * Get the kop that owns the pengiriman_kain
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function kop()
+
+    public function kode()  
     {
-        return $this->belongsTo(KOP::class, 'kop', 'id');
-    } 
+        return $this->belongsTo(DFregkain_printing::class, 'kode_kain', 'kode_kain');
+    }
+
 }

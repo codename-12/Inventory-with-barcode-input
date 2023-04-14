@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Models\KOP;
-use App\Models\stock_printing;
+use App\Models\GJ_stock_printing;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DataTables;
@@ -20,7 +20,7 @@ class GJstockprintingController extends Controller
     public function index(Request $request)
         {
             if ($request->ajax()) {
-                $data = stock_printing::select('*')->with(['kop', 'customer', 'penerimaan', 'pengiriman']);
+                $data = GJ_stock_printing::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                 return Datatables::of($data)
                         ->addIndexColumn()
                         ->addColumn('action', 'GJstockprinting.actions')
@@ -55,7 +55,7 @@ class GJstockprintingController extends Controller
          'keterangan',
          ]);
      
-         stock_printing::create($request->all());
+         GJ_stock_printing::create($request->all());
      
          return redirect()->route('GJstockprinting.index')
                          ->with('success','Benang created successfully.');
@@ -68,7 +68,7 @@ class GJstockprintingController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function show(stock_printing $stock_printing)
+     public function show(GJ_stock_printing $GJ_stock_printing)
      {
          
          return view('GJstockprinting.show');
@@ -81,10 +81,10 @@ class GJstockprintingController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function edit(stock_printing $stock_printing)
+     public function edit(GJ_stock_printing $GJ_stock_printing)
      {
-        $stock_printing = stock_printing::all();
-         return view('GJstockprinting.edit').compact('stock_printing');
+        $GJ_stock_printing = GJ_stock_printing::all();
+         return view('GJstockprinting.edit').compact('GJ_stock_printing');
      }
  
      /**
@@ -94,7 +94,7 @@ class GJstockprintingController extends Controller
       * @param  int  $id
       * @return \Illuminate\Http\Response
       */
-     public function update(Request $request,stock_printing $stock_printing)
+     public function update(Request $request,GJ_stock_printing $GJ_stock_printing)
      {
          request()->validate([
          'id_customer' => 'required',
@@ -108,7 +108,7 @@ class GJstockprintingController extends Controller
          'keterangan',
          ]);
      
-         stock_printing::update($request->all());
+         GJ_stock_printing::update($request->all());
      
          return redirect()->route('GJstockprinting.index')
                          ->with('success','Invoice telah dibuat.');
@@ -121,8 +121,8 @@ class GJstockprintingController extends Controller
       */
      public function destroy($id)
      {
-         $stock_printing = stock_printing::find($id);
-         $stock_printing->delete();
+         $GJ_stock_printing = GJ_stock_printing::find($id);
+         $GJ_stock_printing->delete();
          return redirect()->route('GJstockprinting.index')
                          ->with('success','Benang deleted successfully');
      }

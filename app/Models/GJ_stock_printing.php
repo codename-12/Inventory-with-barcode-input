@@ -8,18 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class GJ_stock_printing extends Model
 {
     use HasFactory;
-    public $table = "stock_printing";
+    public $table = "gj_stock_printing";
     protected $fillable = [
-        'kode_barang',
-        'id_customer',
-        'jenis_kain',
-        'warna',
-        'kop',
-        'LOT',
-        'ROL',
-        'id_penerimaan',
-        'id_pengiriman',
-        'keterangan',
+        'tanggal_masuk',
+        'kode_kain',
+        'kg'
     ];
 
+    public function kode()
+    {
+        return $this->belongsTo(DFregkain_printing::class, 'kode_kain', 'kode_kain');
+    }
 }

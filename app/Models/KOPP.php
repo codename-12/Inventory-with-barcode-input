@@ -10,7 +10,7 @@ class KOPP extends Model
     use HasFactory;
     public $table = "kartu_order_proses_printing";
     protected $fillable = [
-      'NO_KOP',
+      'NO_KOPP',
       'NO_SSP-SJ',
       'id_customer',
       'jenis_kain',

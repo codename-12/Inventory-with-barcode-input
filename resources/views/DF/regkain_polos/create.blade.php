@@ -39,6 +39,7 @@ role="document"
       placeholder="DD/MM/YY"
       class="form-control"
       name="tanggal"
+      value="{{ date('Y-m-d') }}"
       data-parsley-required="true"
       data-parsley-error-message="Tanggal Harus diisi."
     />

@@ -25,7 +25,7 @@ role="document"
 <i data-feather="x"></i>
 </button>
 </div>
-<form action="{{ route('regkain_polos.store') }}" method="POST" data-parsley-validate>
+<form action="{{ route('regkain_printing.store') }}" method="POST" data-parsley-validate>
  @csrf
  <div class="modal-body">
   <label>Kode Kain: </label>
@@ -37,6 +37,7 @@ role="document"
      <input
       type="date"
       placeholder="DD/MM/YY"
+      value="{{ date('Y-m-d') }}"
       class="form-control"
       name="tanggal"
       data-parsley-required="true"
@@ -63,7 +64,7 @@ role="document"
         data-parsley-required="true"
        data-parsley-error-message="Pilih BPB Terbaru">
        @foreach ($kops as $kop)
-          <option value="{{ $kop->id}}">{{ $kop->NO_KOP }}</option>
+          <option value="{{ $kop->id}}">{{ $kop->NO_KOPP }}</option>
        @endforeach
    </select>
   </div>

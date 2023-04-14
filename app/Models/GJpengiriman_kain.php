@@ -22,7 +22,6 @@ class GJpengiriman_kain extends Model
     'no_po',
     'kode_kain',
     'kg'
-
     ];
 
 

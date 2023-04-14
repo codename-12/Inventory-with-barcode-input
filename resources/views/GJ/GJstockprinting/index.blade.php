@@ -25,7 +25,7 @@
   <div class="page-title">
     <div class="row">
       <div class="col-12 col-md-6 order-md-1 order-last">
-        <h3>Data Stock Kain Polos</h3>
+        <h3>Data Stock Kain Printing   </h3>
         <p class="text-subtitle text-muted">data ini terus ter update jika ada perubahan secara live.</p>
       </div>
     </div>
@@ -39,9 +39,7 @@
         <div class="row">
           <div class="col-lg-12 margin-tb">
               <div class="pull-right">
-                  @can('GJStock-create')
-                  <a class="btn btn-success" href="{{ route('benang.create') }}"> Buat Penerimaan Benang baru</a>
-                  @endcan
+                  
               </div>
           </div>
       </div>
@@ -50,14 +48,15 @@
         <table class="table table-bordered data-table">
             <thead>
             <tr>
-                <th>No</th>
+                <th>ID</th>
+                <th>tanggal masuk</th>
                 <th>Customer</th>
                 <th>Jenis Kain</th>
+                <th>Warna</th>  
                 <th>KOP</th>
-                <th>DESAIN</th>
-                <th>GAMBAR</th>
-                <th>tanggal Masuk</th>
-                <th>tanggal Keluar</th>
+                <th>LOT</th>
+                <th>ROL</th>
+                <th>KG</th>
                 <th>keterangan</th>
                 <th width="200px">Action</th> 
             </tr>
@@ -65,28 +64,37 @@
         </table>
         </div>
         <script type="text/javascript">
-            $(function () {
-              var table = $('.data-table').DataTable({
-                  processing: true,
-                  serverSide: true,
-                  scrollX: true,
-                  ajax: "{{ route('GJstockprinting.index') }}",
-                  columns: [
-                      {data: 'id', name: 'id'},
-                      {data: 'customer.nama_customer', name: 'customer.nama_customer'},
-                      {data: 'jenis_kain', name: 'jenis_kain'},
-                      {data: 'kop.KOP', name: 'kop.KOP'},
-                      {data: 'Desain', name: 'Desain'},
-                      {data: 'penerimaan.tanggal', name: 'penerimaan.tanggal'},
-                      {data: 'pengiriman.tanggal', name: 'pengiriman.tanggal'},
-                      {data: 'keterangan', name: 'keterangan'},
-                      {data: 'action', name: 'action', orderable: false, searchable: false},
-                  ]
-              });
-              
-            });
-          </script>
-  
+          $(function () {
+            var table = $('.data-table').DataTable({
+            processing: true,
+            serverSide: true,
+            scrollX: true,
+            ajax: "{{ route('GJstockprinting.index') }}",
+            columns: [
+                {data: 'id', name: 'id'},
+                {data: 'tanggal_masuk', name: 'tanggal_masuk'},
+                {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
+                {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+                {data: 'kode.warna', name: 'kode.warna'},
+                {data: 'kode.no_kop.NO_KOPP', name: 'kode.no_kop.NO_KOPP'},
+                {data: 'kode.LOT', name: 'kode.LOT'},
+                {data: 'kode.ROL', name: 'kode.ROL'},
+                {data: 'kg', name: 'kg'},
+                {data: 'kode.keterangan', name: 'kode.keterangan'},
+                {data: 'action', name: 'action', orderable: false, searchable: false},
+            ],
+            "createdRow": function(row, data, dataIndex) {
+                var date = new Date(data.tanggal_masuk); // Ambil data tanggal dari kolom "tanggal_masuk"
+                var today = new Date(); // Tanggal hari ini
+                var oneMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()); // Tanggal satu bulan yang lalu
+                
+                if (date < oneMonthAgo) {
+                    $(row).addClass('overdue'); // Tambahkan kelas "overdue" ke baris
+                }
+            }
+           });
+        });
+            </script>
       </div>
     </div>
 </div>

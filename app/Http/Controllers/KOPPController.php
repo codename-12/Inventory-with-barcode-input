@@ -60,7 +60,6 @@ class KOPPController extends Controller
             'id_customer' => 'required',
             'tanggal' => 'required',
             'design' => 'required',
-            'warna' => 'required',
             'lebar' => 'required',
             'ROL' => 'required',
             'KG'=> 'required',

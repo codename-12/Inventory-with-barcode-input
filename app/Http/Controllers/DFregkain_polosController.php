@@ -99,8 +99,8 @@ class DFregkain_polosController extends Controller
 
    public function destroy($kode_kain)
    {     
-        $regkainpolos = DFregkain_polos::find($kode_kain);
-        $regkainpolos->delete();
+        $regkainpolos = DFregkain_polos::where('kode_kain', $kode_kain)->first();
+        $regkainpolos ->delete();
         return redirect()->route('regkain_polos.index')
                        ->with('success','Data deleted successfully');
    }
