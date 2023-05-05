@@ -17,7 +17,7 @@ class GJ_H_stock_polosListener
      *
      * @return void
      */
-    public function __construct()
+    public function __construct()   
     {
         //
     }
@@ -28,26 +28,27 @@ class GJ_H_stock_polosListener
      * @param  object  $event
      * @return void
      */
-    public function handle(GJpengirimanKainSaved $event)
+     public function handle(GJpengirimanKainSaved $event)
     {
         $kode_kain = json_decode($event->pengiriman->kode_kain, true);
 
         foreach ($kode_kain as $kode) {
+            $cek_kain = GJ_stock_polos::where('kode_kain', $kode)->first();
             $penerimaan_kain = GJpenerimaan_kain::where('kode_kain', $kode)
                 ->orderBy('tanggal_masuk', 'desc')
                 ->first();
             $regkain = DFregkain_polos::where('kode_kain', $kode)->first();
             $kg = $regkain ? $regkain->KG : null;
-            $cek_kain = GJ_stock_polos::where('kode_kain', $kode)->first();
 
-            if ($cek_kain) {
-                $stok_polos = new GJ_H_stok_polos();
+            if ($cek_kain && $penerimaan_kain) {
+                $stok_polos = new GJ_H_stock_polos();
                 $stok_polos->kode_kain = $kode;
                 $stok_polos->kg = $kg;
                 $stok_polos->tanggal_masuk = $penerimaan_kain->tanggal_masuk;
                 $stok_polos->tanggal_kirim = $event->pengiriman->tanggal_kirim;
                 $stok_polos->keterangan = 'Pengiriman ke GJ';
                 $stok_polos->save();
+                
                 GJ_stock_polos::whereIn('kode_kain', $kode_kain)->delete();   
 
             }

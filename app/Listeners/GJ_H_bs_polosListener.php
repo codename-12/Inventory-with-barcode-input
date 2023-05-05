@@ -2,6 +2,7 @@
 
 namespace App\Listeners;
 use App\Models\GJ_H_bs_polos;
+use App\Models\GJ_bs_polos;
 use App\Models\GJpengiriman_kain;
 use App\Models\GJpenerimaan_kain;
 use App\Models\DFregkain_polos;
@@ -27,7 +28,7 @@ class GJ_H_bs_polosListener
      * @param  object  $event
      * @return void
      */
-    public function handle(GJpengirimanKainSaved $event)
+     public function handle(GJpengirimanKainSaved $event)
     {
         $kode_kain = json_decode($event->pengiriman->kode_kain, true);
 
@@ -37,8 +38,9 @@ class GJ_H_bs_polosListener
                 ->first();
             $regkain = DFregkain_polos::where('kode_kain', $kode)->first();
             $kg = $regkain ? $regkain->KG : null;
+            $cek_kain = GJ_bs_polos::where('kode_kain', $kode)->first();
 
-            if ($penerimaan_kain) {
+            if ($cek_kain && $penerimaan_kain) {
                 $stok_polos = new GJ_H_bs_polos();
                 $stok_polos->kode_kain = $kode;
                 $stok_polos->kg = $kg;
@@ -46,6 +48,7 @@ class GJ_H_bs_polosListener
                 $stok_polos->tanggal_kirim = $event->pengiriman->tanggal_kirim;
                 $stok_polos->keterangan = 'Pengiriman ke GJ';
                 $stok_polos->save();
+                GJ_bs_polos::whereIn('kode_kain', $kode_kain)->delete();
             }
         }
     }

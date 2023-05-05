@@ -62,10 +62,6 @@ class GJPengirimanKainController extends Controller
     if (!is_array($kode_kain)) {
         $kode_kain = [$kode_kain];
     }
-
-    GJ_bs_polos::whereIn('kode_kain', $kode_kain)->delete();
-       
-    GJ_bs_printing::whereIn('kode_kain', $kode_kain)->delete();
     
     $pengiriman->save();
 

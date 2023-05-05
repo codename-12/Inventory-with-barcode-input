@@ -64,7 +64,7 @@ role="document"
         data-parsley-required="true"
        data-parsley-error-message="Pilih BPB Terbaru">
        @foreach ($kops as $kop)
-          <option value="{{ $kop->id}}">{{ $kop->NO_KOPP }}</option>
+          <option value="{{ $kop->id}}">{{ $kop->NO_KOPP }} LOT {{ $kop->LOT }}</option>
        @endforeach
    </select>
   </div>

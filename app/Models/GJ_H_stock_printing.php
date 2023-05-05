@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class GJ_stock_printing extends Model
+class GJ_H_stock_printing extends Model
 {
     use HasFactory;
     public $table = "h_stock_printing";
