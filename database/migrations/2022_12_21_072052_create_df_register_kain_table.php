@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()        
     {
         Schema::create('df_regkain_polos', function (Blueprint $table) {
-            $table->string('kode_kain')->primary();
+            $table->id();
+            $table->string('kode_kain')->unique();
             $table->date('tanggal');
             $table->foreignId('kop')
             ->constrained('kartu_order_proses')

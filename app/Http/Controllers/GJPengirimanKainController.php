@@ -4,13 +4,16 @@ namespace App\Http\Controllers;
 use App\Models\GJpenerimaan_kain;
 use App\Models\GJ_stock_polos;
 use App\Models\GJ_bs_polos;
+use App\Models\GJ_stock_printing;
+use App\Models\GJ_bs_printing;
 use App\Models\DFregkain_polos;
+use App\Models\DFregkain_printing;
 use App\Models\GJpengiriman_kain;
 use Illuminate\Http\Request;
 use DataTables;
 
 class GJPengirimanKainController extends Controller
-{
+{ 
     function __construct()
    {
         $this->middleware('permission:GJstock-list|GJstock-create|GJstock-edit|GJstock-delete', ['only' => ['index','show']]);
@@ -35,7 +38,9 @@ class GJPengirimanKainController extends Controller
     {
         $stock_polos = GJ_stock_polos::select('kode_kain')->get();
         $bs_polos = GJ_bs_polos::select('kode_kain')->get();
-        return view('GJ.GJpengirimankain.create' ,compact('stock_polos','bs_polos'));
+        $stock_printing = GJ_stock_printing::select('kode_kain')->get();
+        $bs_printing = GJ_bs_printing::select('kode_kain')->get();
+        return view('GJ.GJpengirimankain.create' ,compact('stock_polos','bs_polos','stock_printing','bs_printing'));
     }
 
     public function store(Request $request)
@@ -58,9 +63,10 @@ class GJPengirimanKainController extends Controller
         $kode_kain = [$kode_kain];
     }
 
-    GJ_stock_polos::whereIn('kode_kain', $kode_kain)->delete();   
     GJ_bs_polos::whereIn('kode_kain', $kode_kain)->delete();
-
+       
+    GJ_bs_printing::whereIn('kode_kain', $kode_kain)->delete();
+    
     $pengiriman->save();
 
     foreach ($kode_kain as $value) {
@@ -70,7 +76,7 @@ class GJPengirimanKainController extends Controller
     return redirect()->route('GJpengirimankain.index')
                      ->with('success', 'Data pengiriman berhasil ditambahkan.');
 }
-    public function edit(GJpengiriman_kain $kop)
+    public function edit(GJpengiriman_kain $pengiriman_kain)
     {
 
         return view('GJpengirimankain.edit').compact('kop');
@@ -83,7 +89,7 @@ class GJPengirimanKainController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,GJpengiriman_kain $kop)
+    public function update(Request $request,GJpengiriman_kain $pengiriman_kain)
     {
         request()->validate([
             'id_customer' => 'required',

@@ -27,7 +27,7 @@
                 {{ $regkain_printing->kode_kain }}
                 </td>
             <td style="height: 16px; width: 87.8125px;">KOP</td>
-            <td style="width: 133.387px; height: 16px;">{{ $regkain_printing->no_kop->NO_KOP }}</td>
+            <td style="width: 133.387px; height: 16px;">{{ $regkain_printing->no_kop->NO_KOPP }}</td>
             </tr>
             <tr style="height: 10px;">
                 <td style="height: 10px; width: 87.8125px;">Design</td>

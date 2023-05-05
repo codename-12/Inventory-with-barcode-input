@@ -52,6 +52,7 @@
                 <th>tanggal masuk</th>
                 <th>Customer</th>
                 <th>Jenis Kain</th>
+                <th>Kode Desain</th>
                 <th>Warna</th>  
                 <th>KOP</th>
                 <th>LOT</th>
@@ -75,6 +76,7 @@
                 {data: 'tanggal_masuk', name: 'tanggal_masuk'},
                 {data: 'kode.no_kop.customer.nama_customer', name: 'kode.no_kop.customer.nama_customer'},
                 {data: 'kode.no_kop.jenis_kain', name: 'kode.no_kop.jenis_kain'},
+                {data: 'kode.no_kop.design', name: 'kode.no_kop.design'},
                 {data: 'kode.warna', name: 'kode.warna'},
                 {data: 'kode.no_kop.NO_KOPP', name: 'kode.no_kop.NO_KOPP'},
                 {data: 'kode.LOT', name: 'kode.LOT'},

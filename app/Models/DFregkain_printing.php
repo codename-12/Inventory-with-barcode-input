@@ -19,9 +19,9 @@ class DFregkain_printing extends Model
         'KG',
         'keterangan',
     ];
-    public function penerimaan()
+    public function penerimaan_kain()
     {
-        return $this->hasMany(GJpenerimaan_kain::class);
+        return $this->morphMany(GJpenerimaan_kain::class, 'kainable', 'tipe_kain', 'kode_kain');
     }
     public function no_kop()
     {

@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 //app 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -33,6 +34,7 @@ use App\Http\Controllers\KOPPController;
 use App\Http\Controllers\DFProgresskainController;
 use App\Http\Controllers\DFregkain_polosController;
 use App\Http\Controllers\DFregkain_printingController;
+
 
 
 

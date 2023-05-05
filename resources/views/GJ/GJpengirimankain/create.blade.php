@@ -47,9 +47,19 @@
                                       <option value="{{ $polos->kode_kain }}">{{ $polos->kode_kain }}</option>
                                     @endforeach
                                   </optgroup>
+                                  <optgroup label="PRINTING">
+                                    @foreach ($stock_printing as $printing)
+                                      <option value="{{ $printing->kode_kain }}">{{ $printing->kode_kain }}</option>
+                                    @endforeach
+                                  </optgroup>
                                   <optgroup label="BS POLOS">
                                     @foreach ($bs_polos as $bs)
                                       <option value="{{ $bs->kode_kain }}">{{ $bs->kode_kain }}</option>
+                                    @endforeach
+                                  </optgroup>
+                                  <optgroup label="BS printing">
+                                    @foreach ($bs_printing as $bsp)
+                                      <option value="{{ $bsp->kode_kain }}">{{ $bsp->kode_kain }}</option>
                                     @endforeach
                                   </optgroup>
                             </select>

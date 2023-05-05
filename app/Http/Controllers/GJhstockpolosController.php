@@ -27,7 +27,6 @@ class GJstockpolosController extends Controller
                        ->rawColumns(['action'])
                        ->make(true);
            }
-           
            return view('GJ.GJhstockpolos.index');
        }   
        

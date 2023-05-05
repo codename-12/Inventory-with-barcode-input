@@ -24,9 +24,9 @@ class DFregkain_polos extends Model
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function penerimaan()
+     public function penerimaan_kain()
     {
-        return $this->hasMany(GJpenerimaan_kain::class);
+        return $this->morphMany(GJpenerimaan_kain::class, 'kainable', 'tipe_kain', 'kode_kain');
     }
     public function no_kop()
     {
