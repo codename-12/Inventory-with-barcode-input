@@ -1,7 +1,7 @@
-<form action="{{ route('GJbspolos.destroy',$id) }}" method="POST">
-    <a class="btn btn-info" href="{{ route('GJbspolos.show',$id) }}">Show</a>
+<form action="{{ route('GJhbsprinting.destroy',$id) }}" method="POST">
+    <a class="btn btn-info" href="{{ route('GJhbsprinting.show',$id) }}">Show</a>
     @can('GJstock-edit')
-    <a class="btn btn-primary" href="{{ route('GJbspolos.edit',$id) }}">Edit</a>
+    <a class="btn btn-primary" href="{{ route('GJhbsprinting.edit',$id) }}">Edit</a>
     @endcan
 
     @csrf

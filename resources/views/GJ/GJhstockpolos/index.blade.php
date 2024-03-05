@@ -25,7 +25,7 @@
   <div class="page-title">
     <div class="row">
       <div class="col-12 col-md-6 order-md-1 order-last">
-        <h3>Data Stock Kain Polos</h3>
+        <h3>Riwayat Pengiriman Stock Kain Polos</h3>
         <p class="text-subtitle text-muted">data ini terus ter update jika ada perubahan secara live.</p>
       </div>
     </div>
@@ -41,7 +41,6 @@
           <thead>
           <tr>
               <th>No</th>
-              <th>tanggal masuk</th>
               <th>Customer</th>
               <th>Jenis Kain</th>
               <th>Warna</th>  
@@ -49,6 +48,8 @@
               <th>LOT</th>
               <th>ROL</th>
               <th>KG</th>
+              <th>tanggal masuk</th>
+              <th>tanggal masuk</th>
               <th>keterangan</th>
               <th width="200px">Action</th> 
           </tr>
@@ -76,15 +77,6 @@
             {data: 'kode.keterangan', name: 'kode.keterangan'},
             {data: 'action', name: 'action', orderable: false, searchable: false},
         ],
-        "createdRow": function(row, data, dataIndex) {
-            var date = new Date(data.tanggal_masuk); // Ambil data tanggal dari kolom "tanggal_masuk"
-            var today = new Date(); // Tanggal hari ini
-            var oneMonthAgo = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate()); // Tanggal satu bulan yang lalu
-            
-            if (date < oneMonthAgo) {
-                $(row).addClass('overdue'); // Tambahkan kelas "overdue" ke baris
-            }
-        }
        });
     });
         </script>

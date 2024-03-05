@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\KOP;
-use App\Models\GJ_bs_polos;
+use App\Models\GJ_H_bs_polos;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DataTables;
@@ -21,7 +21,7 @@ class GJhbspolosController extends Controller
    public function index(Request $request)
        {
            if ($request->ajax()) {
-               $data = GJ_bs_polos::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
+               $data = GJ_H_bs_polos::select('*')->with(['kode','kode.no_kop','kode.no_kop.customer',])->orderBy('created_at', 'desc');
                return Datatables::of($data)
                        ->addIndexColumn()
                        ->addColumn('action', 'GJ.GJbspolos.action')
@@ -29,12 +29,12 @@ class GJhbspolosController extends Controller
                        ->make(true);
            }
            
-           return view('GJ.GJbspolos.index');
+           return view('GJ.GJhbspolos.index');
        }   
        public function create()
     {
 
-    }
+    }   
     /**
      * Store a newly created resource in storage.
      *

@@ -29,8 +29,13 @@ class GJPenerimaankainController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $data = GJpenerimaan_kain::select('*')
-                ->with(['kain_polos', '.kain_polos.no_kop', 'kain_polos.no_kop.customer', 'kain_printing', '.kain_printing.no_kop', 'kain_printing.no_kop.customer'])
+            $data = GJpenerimaan_kain::select('*')->with([
+                'kain_polos', 
+                'kain_polos.no_kop',
+                'kain_polos.no_kop.customer',
+                'kain_printing',
+                '.kain_printing.no_kop',
+                'kain_printing.no_kop.customer'])
                 ->orderBy('created_at', 'desc');
             return Datatables::of($data)
                 ->addIndexColumn()

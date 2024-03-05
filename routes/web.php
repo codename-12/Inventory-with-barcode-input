@@ -24,6 +24,8 @@ use App\Http\Controllers\GJstockpolosController;
 use App\Http\Controllers\GJbspolosController;
 use App\Http\Controllers\GJhstockpolosController;
 use App\Http\Controllers\GJhbspolosController;
+use App\Http\Controllers\GJhstockprintingController;
+use App\Http\Controllers\GJhbsprintingController;
 use App\Http\Controllers\GJSTOCKController;
 use App\Http\Controllers\GJPengirimanKainController;
 
@@ -79,11 +81,14 @@ Route::group(['middleware' => ['auth']], function() {
     
     Route::resource('GJstockprinting', GJstockprintingController::class);
     Route::resource('GJbsprinting', GJbsprintingController::class);
+    Route::resource('GJhstockprinting', GJhstockprintingController::class);
+    Route::resource('GJhbsprinting', GJhbsprintingController::class);
 
     Route::resource('GJstockpolos', GJstockpolosController::class);
     Route::resource('GJbspolos', GJbspolosController::class);
     Route::resource('GJhstockpolos', GJhstockpolosController::class);
     Route::resource('GJhbspolos', GJhbspolosController::class);
+
     Route::resource('GJpenerimaankain', GJPenerimaankainController::class);
     Route::resource('GJpengirimankain', GJPengirimanKainController::class);
     

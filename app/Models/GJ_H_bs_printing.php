@@ -11,9 +11,10 @@ class GJ_H_bs_printing extends Model
     public $table = "h_bs_printing";
     protected $fillable = [
         'kode_kain',
+        'kg',
         'tanggal_masuk',
         'tanggal_kirim',
-        'kg'
+        'keterangan',
     ];
 
     public function kode()

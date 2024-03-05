@@ -11,6 +11,7 @@ class GJ_H_bs_polos extends Model
     public $table = "h_bs_polos";
     protected $fillable = [
         'kode_kain',
+        'kg',
         'tanggal_masuk',
         'tanggal_kirim',
         'keterangan',

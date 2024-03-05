@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\KOP;
-use App\Models\GJ_stock_polos;
+use App\Models\GJ_H_stock_polos;
 use App\Models\Customer_kain;
 use Illuminate\Http\Request;
 use DataTables;
 
-class GJstockpolosController extends Controller
+class GJhstockpolosController extends Controller
 {
     function __construct()
    {

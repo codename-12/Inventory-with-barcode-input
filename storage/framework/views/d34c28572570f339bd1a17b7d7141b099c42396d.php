@@ -220,7 +220,28 @@
                 <a href="<?php echo e(route('GJbsprinting.index')); ?>" class="sidebar-link">
                   <i class="bi bi-trash3-fill"></i>
                   <span>BS PRINTING</span></a>
-              </li>    
+              </li>
+
+              <li>
+                <a href="<?php echo e(route('GJhstockpolos.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-layers"></i>
+                  <span>PENGIRIMAN STOCK POLOS</span></a>
+              </li>
+              <li>
+                <a href="<?php echo e(route('GJhstockprinting.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-layers-fill"></i>
+                  <span>PENGIRIMAN STOCK PRINTING</span></a>
+              </li>
+              <li>
+                <a href="<?php echo e(route('GJhbspolos.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-trash3"></i>
+                  <span>PENGIRIMAN BS POLOS</span></a>
+              </li>
+              <li>
+                <a href="<?php echo e(route('GJhbsprinting.index')); ?>" class="sidebar-link">
+                  <i class="bi bi-trash3-fill"></i>
+                  <span>PENGIRIMAN BS PRINTING</span></a>
+              </li>
             </ul>
           </li>
           <li class="sidebar-item has-sub">

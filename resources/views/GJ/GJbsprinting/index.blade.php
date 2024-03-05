@@ -71,7 +71,7 @@
                   processing: true,
                   serverSide: true,
                   scrollX: true,
-                  ajax: "{{ route('GJbsprinting.index') }}",
+                  ajax: "{{ route('GJh  bsprinting.index') }}",
                   columns: [
                       {data: 'id', name: 'id'},
                       {data: 'customer.nama_customer', name: 'customer.nama_customer'},
